@@ -17,12 +17,8 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .DS_Store
-.env
-package-lock.json
-.vscode
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-

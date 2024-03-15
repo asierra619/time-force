@@ -20,3 +20,9 @@ dist-ssr
 .env
 package-lock.json
 .vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+

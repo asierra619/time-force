@@ -33,7 +33,9 @@ mutation saveToCart(args) {
       _id
       firstName
       lastName
-      cart
+      cart {
+        food
+      }
     }
 }
 `;
@@ -44,7 +46,9 @@ mutation deleteFromCart($foodName: String!) {
         _id
         firstName
         lastName
-        cart
+        cart {
+          food
+        }
     }
 }
 `;
@@ -55,7 +59,9 @@ mutation saveToWishlish(args) {
         _id
         firstName
         lastName
-        wishlist
+        wishlist {
+            food
+        }
     }
 }
 `;
@@ -66,7 +72,9 @@ mutation saveToWishlish($foodName: String!) {
         _id
         firstName
         lastName
-        wishlist
+        wishlist {
+            food
+        }
     }
 }
 `;

@@ -1,3 +1,3 @@
 import { gql } from '@apollo/client';
 
-//mutations
+//export mutations

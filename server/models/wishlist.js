@@ -10,11 +10,11 @@ const wishlistSchema = new Schema({
   food: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'food'
+      ref: 'Food'
     }
   ]
 });
 
-const Wishlist = model('wishlist', wishlistSchema);
+//const Wishlist = model('wishlist', wishlistSchema);
 
-module.exports = Wishlist;
+module.exports = wishlistSchema;

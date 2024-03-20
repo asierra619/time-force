@@ -10,7 +10,8 @@ const categorySchema = new Schema({
   categoryName: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    unique: true
   }
 });
 

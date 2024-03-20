@@ -34,11 +34,11 @@ const foodSchema = new Schema({
   },
   category: {
     type: Schema.Types.ObjectId,
-    ref: 'category'
-    // required: true
+    ref: 'category',
+    required: true
   }
 });
 
-const Food = model('food', foodSchema);
+const Food = model('Food', foodSchema);
 
 module.exports = Food;

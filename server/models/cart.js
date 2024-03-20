@@ -6,10 +6,6 @@ const { Schema, model } = require('mongoose');
 //   }
 
 const cartSchema = new Schema({
-  purchaseDate: {
-    type: Date,
-    default: Date.now()
-  },
   food: [
     {
       type: Schema.Types.ObjectId,
@@ -17,6 +13,12 @@ const cartSchema = new Schema({
     }
   ]
 });
+
+
+//   purchaseDate: {
+//  type: Date,
+//  default: Date.now()
+// },
 
 //const Cart = model('Cart', cartSchema);
 

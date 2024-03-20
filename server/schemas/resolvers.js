@@ -21,6 +21,7 @@ const resolvers = {
       const token = signToken(newUser);
       return { token, user: newUser };
     },
+
     login: async (parent, { email, password }) => {
       console.log("resolver: login");
       console.log({ email, password });
@@ -38,27 +39,58 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-  },
-  saveToCart: async (parent, args, context) => {
-    if (context.user) {
-      const addToCart = await User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $addToSet: {cart} },
-        { new: true }
-      );
-    }
-  },
-  deleteFromCart : async (parent, {foodName}, context) => {
-    if (context.user) {
-        const addToCart = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: {cart: { foodName:foodName }} },
-          { new: true }
-        );
-      }
-    },
-  }
-},
+
+    saveToCart: async (parent, args, context) => {
+        if (context.user) {
+          const addToCart = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: {cart} },
+            { new: true }
+          );
+          return addToCart;
+        } else {throw AuthenticationError;}
+      },
+
+    deleteFromCart : async (parent, {foodName}, context) => {
+        if (context.user) {
+            const deleteItem = await User.findOneAndUpdate(
+              { _id: context.user._id },
+              { $pull: {cart: { foodName:foodName }} },
+              { new: true }
+            );
+            return deleteItem;
+          } else {throw AuthenticationError;}
+          
+        },
+
+    saveToWishlist: async (parent, args, context) => {
+            if (context.user) {
+              const addToWishlist = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $addToSet: {cart} },
+                { new: true }
+              );
+              return addToWishlist
+            } else {throw AuthenticationError;}
+          },
+
+    deleteFromWishlist : async (parent, {foodName}, context) => {
+            if (context.user) {
+                const deleteItem = await User.findOneAndUpdate(
+                  { _id: context.user._id },
+                  { $pull: {cart: { foodName:foodName }} },
+                  { new: true }
+                );
+                return deleteItem;
+              } else {throw AuthenticationError;}
+            },
+     },
+}
+// in the checkout page: move the item from cart to wishlist
+// optional mutation 1 :
+// findAndUpdate then pull from User [cart] and add to [wishlist]
+// optional mutation 2 :
+// findAndUpdate then pull from User [wishlist] and add to [cart]
 
 
 module.exports = resolvers;

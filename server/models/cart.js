@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-
 // Cart model {
 //   _id!
 //   food: [Food]
@@ -9,16 +8,16 @@ const { Schema, model } = require('mongoose');
 const cartSchema = new Schema({
   purchaseDate: {
     type: Date,
-    default: Date.now
+    default: Date.now()
   },
   food: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'food'
+      ref: 'Food'
     }
   ]
 });
 
-const Cart = model('cart', cartSchema);
+//const Cart = model('Cart', cartSchema);
 
-module.exports = Cart;
+module.exports = cartSchema;

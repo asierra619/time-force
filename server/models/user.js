@@ -1,8 +1,12 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
+const { Schema, model } = require("mongoose");
+const bcrypt = require("bcrypt");
 
+const cartSchema = require("./cart");
+const wishlistSchema = require("./wishlist");
 
-// User model { 
+const formatDate = require('../utils/Date-Format');
+const formatted_date = require("../utils/Date-Format");
+// User model {
 //   _id!
 //   firstName: String!
 //   lastName: String!
@@ -12,52 +16,57 @@ const bcrypt = require('bcrypt');
 //   Cart model: [Cart]
 //   wishlist:[ Wishlist ]
 //   }
-  
 
 const userSchema = new Schema({
   firstName: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   lastName: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   email: {
     type: String,
     required: true,
     unique: true,
-    match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,'Please enter a valid email address.']
+    match: [
+      /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
+      "Please enter a valid email address.",
+    ],
   },
   password: {
     type: String,
     required: true,
     minlength: 6,
-    match: [/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,'Please enter a valid password.']
-  },
+    match: [
+      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+      "Please enter a valid password.",
+    ],
+  }, // matching [a-zA-Z0-9!@#$%^&*]{6,16}
   createdAt: {
-    type: Date,
-    default: Date.now
+    type: String,
+    default: formatDate()
   },
-  cart: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'cart'
-    }
-  ],
-  wishlist: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'wishlist'
-    }
-  ],
+  timeStamp:{
+    type: Date,
+    default :Date.now()
+  },
+
+  cart: [cartSchema],
+  wishlist: [wishlistSchema],
+},
+{
+  toJSON: {
+    virtuals: true,
+  },
 });
 
 // set up pre-save middleware to create password
-userSchema.pre('save', async function(next) {
-  if (this.isNew || this.isModified('password')) {
+userSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
@@ -66,10 +75,11 @@ userSchema.pre('save', async function(next) {
 });
 
 // compare the incoming password with the hashed password
-userSchema.methods.isCorrectPassword = async function(password) {
+userSchema.methods.isCorrectPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
-const User = model('user', userSchema);
+
+const User = model("user", userSchema);
 
 module.exports = User;

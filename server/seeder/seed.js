@@ -7,6 +7,7 @@ const cleanDB = require('./cleanDB');
 // cleanDB clear the records in the collections of the database
 db.once('open', async () => {
   try {
+    // cleandb = async (modelName, collectionName) =>{}
     await cleanDB('Thought', 'thoughts');
 
     await cleanDB('User', 'users');

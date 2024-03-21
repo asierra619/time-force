@@ -5,17 +5,6 @@ const cartSchema = require("./cart");
 const wishlistSchema = require("./wishlist");
 
 const formatDate = require('../utils/Date-Format');
-const formatted_date = require("../utils/Date-Format");
-// User model {
-//   _id!
-//   firstName: String!
-//   lastName: String!
-//   email: String!           match regex
-//   password: String!    match regex
-//   createAt:Date(). Default: date.now()                     (timestamp)
-//   Cart model: [Cart]
-//   wishlist:[ Wishlist ]
-//   }
 
 const userSchema = new Schema({
   firstName: {

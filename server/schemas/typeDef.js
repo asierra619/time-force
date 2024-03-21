@@ -26,7 +26,6 @@ type Food {
 }
 
 type Cart {
-    purchasedDate: String
     food: Food!
 }
 

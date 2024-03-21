@@ -14,6 +14,7 @@ const signupForm = () => {
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
+     //update the state by the key specified by the name variable with the value provided
     setUserFormData({ ...userFormData, [name]: value });
   };
 

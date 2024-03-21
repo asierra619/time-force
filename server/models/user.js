@@ -34,7 +34,7 @@ const userSchema = new Schema({
       /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
       "Please enter a valid password.",
     ],
-  }, // matching [a-zA-Z0-9!@#$%^&*]{6,16}
+  }, // checking for 0-9 and speical characters in the string and match [a-zA-Z0-9!@#$%^&*]{6,16}
   createdAt: {
     type: String,
     default: formatDate()

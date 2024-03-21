@@ -1,15 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-
-// food (including pizza beverage and others {
-//   _id!
-//   stock: Int
-//   foodName: String!
-//   price: Int!
-//   category: [Category]!
-//    }
-
-
 const foodSchema = new Schema({
   foodName: {
     type: String,
@@ -34,7 +24,7 @@ const foodSchema = new Schema({
     default: 0
   },
   category: {
-    type: Schema.Types.ObjectId,
+    type: String,
     ref: 'Category',
     required: true
   }

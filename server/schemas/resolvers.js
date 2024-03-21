@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Category, Food } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -13,7 +13,34 @@ const resolvers = {
         throw AuthenticationError;
       }
     },
-  },
+    allUsers: async(parent, args)=>{
+      console.log("resolver: query all users");
+      try {
+        const users = await User.findAll();
+        return users;
+      } catch (error) {
+        console.log("something went wrong with the query")
+      }
+    },
+    allCategory: async(parent,args)=> {
+      console.log("resolver: query all category");
+      try {
+        const categories = await Category.findAll();
+        return categories;
+      } catch (error) {
+        console.log("something went wrong with the query")
+      }
+    },
+    allFood: async(parent,args)=> {
+      console.log("resolver: query all food");
+      try {
+        const food = await Food.findAll();
+        return food;
+      } catch (error) {
+        console.log("something went wrong with the query")
+      }
+  }
+},
   Mutation: {
     // change username to firstName and lastName
     createUser: async (parent, { firstName, lastName, email, password }) => {

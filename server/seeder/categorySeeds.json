@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "categoryName": "pizza"
+    },
+    {
+        "categoryName": "beverage"
+    },
+    {
+        "categoryName": "side orders"
+    }
+]

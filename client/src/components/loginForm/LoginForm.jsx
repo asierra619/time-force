@@ -9,6 +9,7 @@ const loginForm = () => {
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
+     //update the state by the key specified by the name variable with the value provided
     setUserFormData({ ...userFormData, [name]: value });
   };
 
@@ -17,6 +18,7 @@ const loginForm = () => {
 
     try {
       console.log("userFormData", userFormData);
+     
       const { data } = await login({
         variables: { ...userFormData },
       });

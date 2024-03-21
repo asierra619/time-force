@@ -8,9 +8,11 @@ const cleanDB = require('./cleanDB');
 db.once('open', async () => {
   try {
     // cleandb = async (modelName, collectionName) =>{}
-    await cleanDB('Thought', 'thoughts');
-
     await cleanDB('User', 'users');
+
+    await cleanDB('Category', 'categories');
+
+    await cleanDB('Food','food')
 
     await User.create(userSeeds);
 

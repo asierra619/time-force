@@ -22,7 +22,7 @@ type Food {
      image: String
      price: Float!
      quantity: Int
-     category: Category
+     category: Category!
 }
 
 type Cart {
@@ -40,6 +40,9 @@ type Auth {
 
 type Query {
     me: User
+    allCategory: Catergory
+    allFood: Food
+    allUsers: User
 }
 
 type Mutation {

@@ -5,17 +5,6 @@ const cartSchema = require("./cart");
 const wishlistSchema = require("./wishlist");
 
 const formatDate = require('../utils/Date-Format');
-const formatted_date = require("../utils/Date-Format");
-// User model {
-//   _id!
-//   firstName: String!
-//   lastName: String!
-//   email: String!           match regex
-//   password: String!    match regex
-//   createAt:Date(). Default: date.now()                     (timestamp)
-//   Cart model: [Cart]
-//   wishlist:[ Wishlist ]
-//   }
 
 const userSchema = new Schema({
   firstName: {
@@ -45,7 +34,7 @@ const userSchema = new Schema({
       /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
       "Please enter a valid password.",
     ],
-  }, // matching [a-zA-Z0-9!@#$%^&*]{6,16}
+  }, // checking for 0-9 and speical characters in the string and match [a-zA-Z0-9!@#$%^&*]{6,16}
   createdAt: {
     type: String,
     default: formatDate()

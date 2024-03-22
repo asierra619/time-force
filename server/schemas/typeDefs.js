@@ -40,9 +40,9 @@ type Auth {
 
 type Query {
     me: User
-    allCategory: Category
-    allFood: Food
-    allUsers: User
+    allCategory: [Category]
+    allFood: [Food]
+    allUsers: [User]
 }
 
 type Mutation {

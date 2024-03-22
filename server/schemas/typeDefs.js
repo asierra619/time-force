@@ -48,11 +48,11 @@ type Query {
 type Mutation {
     createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    # saveToCart(args): User
+    saveToCart(args: ID): User #added ID to debug - change as needed
     deleteFromCart(foodName: String!): User
-    # saveToWishlish(args): User
+    saveToWishlist(args: ID): User #added ID to debug - change as needed
     deleteFromWishlist(foodName: String!): User
- }
+}
 `;
 
 module.exports = typeDefs;

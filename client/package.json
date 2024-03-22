@@ -8,7 +8,7 @@
     "watch": "nodemon",
     "seed": "node seeder/seed.js",
     "build": "vite build",
-    "dev":"vite"
+    "dev": "vite"
   },
   "keywords": [],
   "author": "",

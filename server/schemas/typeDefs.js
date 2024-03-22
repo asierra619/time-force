@@ -17,20 +17,20 @@ type Category {
 }
 
 type Food {
-     foodName: String!
-     description: String
-     image: String
-     price: Float!
-     quantity: Int
-     category: Category!
+    foodName: String!
+    description: String
+    image: String
+    price: Float!
+    quantity: Int
+    category: Category!
 }
 
 type Cart {
-    food: Food!
+    food: [Food]
 }
 
 type Wishlist {
-    food: Food!
+    food: [Food]
 }
 
 type Auth {

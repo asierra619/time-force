@@ -5,7 +5,7 @@ import SignupForm from "../signupForm/SignupForm";
 import Auth from "../../utils/auth";
 
 export default function NavBar() {
-  const [showForm, setShowForm] = useState(false);
+  const [showAuthForm, setShowAuthForm] = useState(false);
 
   return (
     <>
@@ -19,11 +19,12 @@ export default function NavBar() {
         <div onClick={() => setShowForm(true)}>Login /or Sign Up</div>
       )}
 
-      <Form
+      <AuthForm
       show={showForm}
       onHide={()=>setShowForm(false)}
       >
-      </Form>
+      </AuthForm>
     </>
   );
 }
+// modal component is similar to custom alert box

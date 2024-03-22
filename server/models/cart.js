@@ -1,10 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-// Cart model {
-//   _id!
-//   food: [Food]
-//   }
-
 const cartSchema = new Schema({
   food: [
     {
@@ -13,12 +8,6 @@ const cartSchema = new Schema({
     }
   ]
 });
-
-
-//   purchaseDate: {
-//  type: Date,
-//  default: Date.now()
-// },
 
 //const Cart = model('Cart', cartSchema);
 

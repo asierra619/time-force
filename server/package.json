@@ -2,12 +2,11 @@
   "name": "time-force",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "watch": "nodemon",
-    "seed": "node seeders/seed.js"
+    "watch": "nodemon server.js",
+    "seed": "node seeder/seed.js"
   },
   "keywords": [],
   "author": "",

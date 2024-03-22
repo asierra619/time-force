@@ -15,7 +15,6 @@ const loginForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
     try {
       console.log("userFormData", userFormData);
      

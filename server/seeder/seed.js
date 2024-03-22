@@ -9,7 +9,7 @@ db.once('open', async () => {
     // cleandb = async (modelName, collectionName) =>{}
     await cleanDB('User', 'users');
     await cleanDB('Category', 'categories');
-    await cleanDB('Food','food')
+    await cleanDB('Food','foods')
 
     await User.create(userSeeds);
     await Category.create(categorySeeds);

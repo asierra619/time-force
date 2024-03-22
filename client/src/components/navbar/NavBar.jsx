@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import LoginForm from "../loginForm/LoginForm";
 import SignupForm from "../signupForm/SignupForm";
 import Auth from "../../utils/auth";
@@ -13,17 +13,17 @@ export default function NavBar() {
       {Auth.loggedIn() ? (
         <>
           <div>Show Cart</div>
-          <button onClick={Auth.logout}>Log Out</button>
+          <div onClick={Auth.logout}>Log Out</div>
         </>
       ) : (
-        <button onClick={() => setShowForm(true)}>Login or Sign Up</button>
+        <div onClick={() => setShowForm(true)}>Login or Sign Up</div>
       )}
 
-      <AuthForm
+      <Form
       show={showForm}
-      onHide={()=>setShowForm(false)}>
-        
-      </AuthForm>
+      onHide={()=>setShowForm(false)}
+      >
+      </Form>
     </>
   );
 }

@@ -67,7 +67,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-
+/*
     saveToCart: async (parent, args, context) => {
         if (context.user) {
           const addToCart = await User.findOneAndUpdate(
@@ -78,7 +78,7 @@ const resolvers = {
           return addToCart;
         } else {throw AuthenticationError;}
       },
-
+*/
     deleteFromCart : async (parent, {foodName}, context) => {
         if (context.user) {
             const deleteItem = await User.findOneAndUpdate(
@@ -90,7 +90,7 @@ const resolvers = {
           } else {throw AuthenticationError;}
           
         },
-
+/*
     saveToWishlist: async (parent, args, context) => {
             if (context.user) {
               const addToWishlist = await User.findOneAndUpdate(
@@ -101,7 +101,7 @@ const resolvers = {
               return addToWishlist
             } else {throw AuthenticationError;}
           },
-
+*/
     deleteFromWishlist : async (parent, {foodName}, context) => {
             if (context.user) {
                 const deleteItem = await User.findOneAndUpdate(

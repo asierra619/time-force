@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Time Force's Project 3",
   "main": "server/server.js",
-  "type": "module",
   "scripts": {
     "start": "node server --ignore client",
     "develop": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\"",

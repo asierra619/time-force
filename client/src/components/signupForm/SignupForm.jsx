@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 import { CREATE_USER } from "../../utils/mutations";
 
-const signupForm = () => {
+const SignupForm = () => {
   const [userFormData, setUserFormData] = useState({
     firstName: "",
     lastName: "",
@@ -71,4 +71,4 @@ const signupForm = () => {
   );
 };
 
-export default signupForm;
+export default SignupForm;

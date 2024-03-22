@@ -7,7 +7,7 @@ import {
 } from '@apollo/client';
 import './App.css'
 import { setContext } from '@apollo/client/link/context';
-import Navbar from './components/NavBar'
+import Navbar from './components/navbar/NavBar'
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists

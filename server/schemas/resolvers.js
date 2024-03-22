@@ -25,7 +25,7 @@ const resolvers = {
       }
     },
     allCategory: async(parent,args)=> {
-      console.log("resolver: query all category");
+      console.log("resolver: query all categories");
       try {
         const categories = await Category.find({});
         return categories;

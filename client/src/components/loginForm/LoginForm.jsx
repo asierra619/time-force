@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 import { LOGIN_USER } from "../../utils/mutations";
 
-const loginForm = () => {
+const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(CREATE_USER);
 
@@ -53,4 +53,4 @@ const loginForm = () => {
   );
 };
 
-export default loginForm;
+export default LoginForm;

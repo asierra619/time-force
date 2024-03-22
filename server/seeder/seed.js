@@ -13,7 +13,7 @@ db.once('open', async () => {
 
     await User.create(userSeeds);
     await Category.create(categorySeeds);
-    await Food.create(foodSeeds);
+    //await Food.create(foodSeeds);
 
     for (let i = 0; i < thoughtSeeds.length; i++) {
       const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
@@ -25,6 +25,10 @@ db.once('open', async () => {
           },
         }
       );
+    }
+
+    for (let i = 0; i < foodSeeds.length; i++) {
+
     }
   } catch (err) {
     console.error(err);

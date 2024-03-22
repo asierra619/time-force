@@ -16,7 +16,7 @@ export default function NavBar() {
           <div onClick={Auth.logout}>Log Out</div>
         </>
       ) : (
-        <div onClick={() => setShowForm(true)}>Login or Sign Up</div>
+        <div onClick={() => setShowForm(true)}>Login /or Sign Up</div>
       )}
 
       <Form

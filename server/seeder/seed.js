@@ -24,18 +24,3 @@ db.once('open', async () => {
   process.exit(0);
 });
 
-/*    
-for (let i = 0; i < thoughtSeeds.length; i++) {
-      const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
-      const user = await User.findOneAndUpdate(
-        { username: thoughtAuthor },
-        {
-          $addToSet: {
-            thoughts: _id,
-          },
-        }
-      );
-    }
-    for (let i = 0; i < foodSeeds.length; i++) {}
-    
-*/

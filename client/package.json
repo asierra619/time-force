@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "vite",
     "watch": "nodemon",
     "seed": "node seeder/seed.js",
     "build": "vite build",

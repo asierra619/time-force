@@ -16,27 +16,30 @@ const resolvers = {
     allUsers: async(parent, args)=>{
       console.log("resolver: query all users");
       try {
-        const users = await User.findAll();
+        const users = await User.find();
         return users;
       } catch (error) {
+        console.log(error);
         console.log("something went wrong with the query")
       }
     },
     allCategory: async(parent,args)=> {
       console.log("resolver: query all category");
       try {
-        const categories = await Category.findAll();
+        const categories = await Category.find({});
         return categories;
       } catch (error) {
+        console.log(error);
         console.log("something went wrong with the query")
       }
     },
     allFood: async(parent,args)=> {
       console.log("resolver: query all food");
       try {
-        const food = await Food.findAll();
+        const food = await Food.find({}).populated('Category');
         return food;
       } catch (error) {
+        console.log(error);
         console.log("something went wrong with the query")
       }
   }

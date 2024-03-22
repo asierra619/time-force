@@ -14,3 +14,13 @@ query me {
   }
 }
 `;
+
+export const QUERY_ALL_USERS =gql`
+query allUsers {
+  allUsers {
+    _id
+    firstName
+    lastName
+    email
+  }
+}`;

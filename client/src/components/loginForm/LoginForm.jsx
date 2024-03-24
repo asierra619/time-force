@@ -9,7 +9,7 @@ const LoginForm = () => {
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
-     //update the state by the key specified by the name variable with the value provided
+    //update the state by the key specified by the name variable with the value provided
     setUserFormData({ ...userFormData, [name]: value });
   };
 
@@ -17,16 +17,23 @@ const LoginForm = () => {
     event.preventDefault();
     try {
       console.log("userFormData", userFormData);
-     
+
       const { data } = await login({
         variables: { ...userFormData },
       });
 
       console.log("login mutation data return: ", data);
       Auth.login(data.login.token);
+
+      setUserFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+      });
     } catch (err) {
       console.error(err);
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -49,6 +56,7 @@ const LoginForm = () => {
           placeholder="password"
         />
       </form>
+      <button onClick={handleFormSubmit}>Submit</button>
     </div>
   );
 };

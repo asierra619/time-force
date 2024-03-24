@@ -43,8 +43,7 @@ export default function NavBar() {
           <div
             key={2}
             className={
-              formTab === "signUp" ? "formTab-highlight" : "tab-hidden"
-            }
+              formTab === "signUp" ? "formTab-highlight" : "tab-hidden"}
           >
             <SignupForm />
           </div>
@@ -54,8 +53,8 @@ export default function NavBar() {
     </>
   );
 }
-// modal component is similar to custom alert box
-//onHide={()=>setShowForm(false)}
+
+
 //styling fix the nav bar on the top of the screen  vh10
 
 // fix the login/signUp form below the icon and span

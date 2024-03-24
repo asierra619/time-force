@@ -29,6 +29,14 @@ const SignupForm = () => {
 
       console.log("SignUp mutation return data: ", data);
       Auth.login(data.createUser.token);
+
+      setUserFormData({
+        firstName: '',
+        lastName:'',
+        email: '',
+        password: '',
+      });
+      
     } catch (err) {
       console.error(err);
     }
@@ -37,7 +45,7 @@ const SignupForm = () => {
   return (
     <div>
       <span>Sign Up Form</span>
-      <form onSubmit={handleFormSubmit}>
+      <form>
       <input
           value={userFormData.firstName}
           name="firstName"
@@ -66,6 +74,7 @@ const SignupForm = () => {
           type="text"
           placeholder="password"
         />
+        <button onClick={handleFormSubmit}>Submit</button>
       </form>
     </div>
   );

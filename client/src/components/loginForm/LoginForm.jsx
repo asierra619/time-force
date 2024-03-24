@@ -5,7 +5,7 @@ import { LOGIN_USER } from "../../utils/mutations";
 
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
-  const [login, { error, data }] = useMutation(CREATE_USER);
+  const [login, { error, data }] = useMutation(LOGIN_USER);
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
@@ -32,17 +32,17 @@ const LoginForm = () => {
 
   return (
     <div>
-      <span>login</span>
+      <span>Login Form</span>
       <form onSubmit={handleFormSubmit}>
         <input
-          value={email}
+          value={userFormData.email}
           name="email"
           onChange={handleFormChange}
           type="email"
           placeholder="email"
         />
         <input
-          value={password}
+          value={userFormData.password}
           name="password"
           onChange={handleFormChange}
           type="text"

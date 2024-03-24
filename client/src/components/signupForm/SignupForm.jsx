@@ -36,31 +36,31 @@ const SignupForm = () => {
 
   return (
     <div>
-      <span>login</span>
+      <span>Sign Up Form</span>
       <form onSubmit={handleFormSubmit}>
       <input
-          value={firstName}
+          value={userFormData.firstName}
           name="firstName"
           onChange={handleFormChange}
           type="text"
           placeholder="first name"
         />
          <input
-          value={lastName}
+          value={userFormData.lastName}
           name="lastName"
           onChange={handleFormChange}
           type="text"
           placeholder="last name"
         />
         <input
-          value={email}
+          value={userFormData.email}
           name="email"
           onChange={handleFormChange}
           type="email"
           placeholder="email"
         />
        <input
-          value={password}
+          value={userFormData.password}
           name="password"
           onChange={handleFormChange}
           type="text"

@@ -8,9 +8,13 @@ query me {
     firstName
     lastName
     email
-    password
     createdAt
-    timeStamp
+    cart {
+      food
+    }
+    wishlist{
+      food
+    }
   }
 }
 `;

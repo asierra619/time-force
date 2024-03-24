@@ -13,7 +13,7 @@ const resolvers = {
         throw AuthenticationError;
       }
     },
-    allUsers: async(parent, args)=>{
+    allUsers: async (parent, args) => {
       console.log("resolver: query all users");
       try {
         const users = await User.find();
@@ -21,35 +21,45 @@ const resolvers = {
         return users;
       } catch (error) {
         console.log(error);
-        console.log("something went wrong with the query")
+        console.log("something went wrong with the query");
       }
     },
-    allCategory: async(parent,args)=> {
+    allCategory: async (parent, args) => {
       console.log("resolver: query all categories");
       try {
         const categories = await Category.find({});
         return categories;
       } catch (error) {
         console.log(error);
-        console.log("something went wrong with the query")
+        console.log("something went wrong with the query");
       }
     },
-    allFood: async(parent,args)=> {
+    allFood: async (parent, args) => {
       console.log("resolver: query all food");
       try {
-        const food = await Food.find({}).populated('Category');
+        const food = await Food.find({}).populated("Category");
         return food;
       } catch (error) {
         console.log(error);
-        console.log("something went wrong with the query")
+        console.log("something went wrong with the query");
       }
-  }
-},
+    },
+  },
   Mutation: {
     // change username to firstName and lastName
     createUser: async (parent, { firstName, lastName, email, password }) => {
-      console.log("resolver:createUser", { firstName, lastName, email, password });
-      const newUser = await User.create({ firstName, lastName, email, password });
+      console.log("resolver:createUser", {
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+      const newUser = await User.create({
+        firstName,
+        lastName,
+        email,
+        password,
+      });
       const token = signToken(newUser);
       return { token, user: newUser };
     },
@@ -71,58 +81,72 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-/*
-    saveToCart: async (parent, args, context) => {
-        if (context.user) {
-          const addToCart = await User.findOneAndUpdate(
-            { _id: context.user._id },
-            { $addToSet: {cart} },
-            { new: true }
+
+    saveToCart: async (parent, { foodName }, context) => {
+      if (context.user) {
+        const food = await food.findOne({ foodName: foodName });
+        if (!food) {
+          return console.log(
+            "no food with this foodName is found in database!"
           );
-          return addToCart;
-        } else {throw AuthenticationError;}
-      },
-*/
-    deleteFromCart : async (parent, {foodName}, context) => {
-        if (context.user) {
-            const deleteItem = await User.findOneAndUpdate(
-              { _id: context.user._id },
-              { $pull: {cart: { foodName:foodName }} },
-              { new: true }
-            );
-            return deleteItem;
-          } else {throw AuthenticationError;}
-          
-        },
-/*
+        }
+
+        const addToCart = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { cart: { _id: food._id } } },
+          { new: true }
+        );
+
+        return addToCart;
+      } else {
+        throw AuthenticationError;
+      }
+    },
+
+    deleteFromCart: async (parent, { foodName }, context) => {
+      if (context.user) {
+        const deleteItem = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { cart: { foodName: foodName } } },
+          { new: true }
+        );
+        return deleteItem;
+      } else {
+        throw AuthenticationError;
+      }
+    },
+  // optional
     saveToWishlist: async (parent, args, context) => {
-            if (context.user) {
-              const addToWishlist = await User.findOneAndUpdate(
-                { _id: context.user._id },
-                { $addToSet: {cart} },
-                { new: true }
-              );
-              return addToWishlist
-            } else {throw AuthenticationError;}
-          },
-*/
-    deleteFromWishlist : async (parent, {foodName}, context) => {
-            if (context.user) {
-                const deleteItem = await User.findOneAndUpdate(
-                  { _id: context.user._id },
-                  { $pull: {cart: { foodName:foodName }} },
-                  { new: true }
-                );
-                return deleteItem;
-              } else {throw AuthenticationError;}
-            },
-     },
-}
+      if (context.user) {
+        const addToWishlist = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { cart } },
+          { new: true }
+        );
+        return addToWishlist;
+      } else {
+        throw AuthenticationError;
+      }
+    },
+    // optional
+    deleteFromWishlist: async (parent, { foodName }, context) => {
+      if (context.user) {
+        const deleteItem = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { cart: { foodName: foodName } } },
+          { new: true }
+        );
+        return deleteItem;
+      } else {
+        throw AuthenticationError;
+      }
+    },
+  },
+};
 // in the checkout page: move the item from cart to wishlist
 // optional mutation 1 :
 // findAndUpdate then pull from User [cart] and add to [wishlist]
 // optional mutation 2 :
 // findAndUpdate then pull from User [wishlist] and add to [cart]
-
 
 module.exports = resolvers;

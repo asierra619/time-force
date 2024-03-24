@@ -26,10 +26,10 @@ mutation login($email: String!, $password: String!) {
     }
   }
 `;
-/*
+
 export const SAVE_TO_CART = gql`
-mutation saveToCart(args) {
-    saveToCart(args) {
+mutation saveToCart($foodName: String!) {
+    saveToCart(foodName: $foodName) {
       _id
       firstName
       lastName
@@ -54,8 +54,8 @@ mutation deleteFromCart($foodName: String!) {
 `;
 
 export const SAVE_TO_WISHLIST = gql`
-mutation saveToWishlish(args) {
-    saveToWishlish(args) {
+mutation saveToWishlish($foodName: String!) {
+    saveToWishlish(foodName: $foodName) {
         _id
         firstName
         lastName
@@ -77,5 +77,4 @@ mutation saveToWishlish($foodName: String!) {
         }
     }
 }
-`;'
-*/
+`

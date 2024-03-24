@@ -9,6 +9,12 @@ export default function NavBar() {
   const [showForm, setShowForm] = useState(false);
   const [formTab, setFormTab] = useState("login");
 
+  const toggleForm =() => {
+    if(showForm === false){
+      setShowForm(true);
+    } else {setShowForm(false)}
+  }
+
   return (
     <>
       <div>title</div>
@@ -17,9 +23,9 @@ export default function NavBar() {
           <div onClick={Auth.logout}>Log Out</div>
         </>
       ) : (
-        <div onClick={() => setShowForm(true)}>
+        <div>
           <img src=""></img>
-          <button onClick={() => setShowForm(true)}>Login / Sign Up</button>
+          <button onClick={() => toggleForm()}>Login / Sign Up</button>
         </div>
       )}
       <div className={showForm ? "" : "form-hidden"}>

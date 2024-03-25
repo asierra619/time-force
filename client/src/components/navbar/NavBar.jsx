@@ -12,6 +12,7 @@ export default function NavBar() {
   const [formTab, setFormTab] = useState("login");
 // query_me will use data from context after login
   const { loading, data } = useQuery(QUERY_ME);
+ 
   const userData = data?.me || {}
   console.log("userData", userData)
 
@@ -21,12 +22,16 @@ export default function NavBar() {
     } else {setShowForm(false)}
   }
 
+  if(loading) {
+    return(<div>loading...</div>)
+  }
+
   return (
     <>
-      <div>title</div>
+      <div>Project Title</div>
       {Auth.loggedIn() ? (
         <>
-          <span>{`${userData.firstName + userData.lastName}`}</span>       
+          <span>{`${'Welcome! ' + userData.firstName + ' '+ userData.lastName}`}</span>       
           <button onClick={Auth.logout}>Log Out</button>
         </>
       ) : (
@@ -38,19 +43,19 @@ export default function NavBar() {
       <div className={showForm ? "" : "form-hidden"}>
         <div className="form-container">
           <div className="tab-container">
-            <button onClick={() => setFormTab("login")}>Login</button>
-            <button onClick={() => setFormTab("signUp")}>Sign Up</button>
+            <button onClick={() => setFormTab("login")} className={formTab === "login" ? "formTab-highlight" : ""}>Login</button>
+            <button onClick={() => setFormTab("signUp")}  className={
+              formTab === "signUp" ? "formTab-highlight" : ""}>Sign Up</button>
           </div>
           <div
             key={1}
-            className={formTab === "login" ? "formTab-highlight" : "tab-hidden"}
+            className={formTab === "login" ? "" : "tab-hidden"}
           >
             <LoginForm />
           </div>
           <div
             key={2}
-            className={
-              formTab === "signUp" ? "formTab-highlight" : "tab-hidden"}
+            className={formTab === "signUp" ? "" : "tab-hidden"}
           >
             <SignupForm />
           </div>

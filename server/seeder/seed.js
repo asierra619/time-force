@@ -13,7 +13,23 @@ db.once('open', async () => {
 
     await User.create(userSeeds);
     await Category.create(categorySeeds);
-    await Food.create(foodSeeds);
+   // await Food.create(foodSeeds);
+
+    for (let i = 0; i < foodSeeds.length; i++){
+     // console.log(foodSeeds[i])
+      const category = await Category.findOne({categoryName:foodSeeds[i].categoryName})
+      //console.log(category);
+      const food = await Food.create(foodSeeds[i])
+      const addCategoryToFood = await Food.findByIdAndUpdate({
+        _id : food._id
+      },{
+        $addToSet:{
+          category:{
+            _id: category._id
+          }
+        }
+      })
+    }
 
   } catch (err) {
     console.error(err);

@@ -16,7 +16,7 @@ const resolvers = {
     allUsers: async (parent, args) => {
       console.log("resolver: query all users");
       try {
-        const users = await User.find();
+        const users = await User.find().populate('cart');
         console.log(users);
         return users;
       } catch (error) {
@@ -37,7 +37,7 @@ const resolvers = {
     allFood: async (parent, args) => {
       console.log("resolver: query all food");
       try {
-        const food = await Food.find({}).populated("Category");
+        const food = await Food.find().populate('category');
         return food;
       } catch (error) {
         console.log(error);

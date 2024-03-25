@@ -17,6 +17,7 @@ type Category {
 }
 
 type Food {
+    _id: ID!
     foodName: String!
     description: String
     image: String

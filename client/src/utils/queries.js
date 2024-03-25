@@ -28,6 +28,54 @@ query allUsers {
   }
 }`;
 
+export const QUERY_ALL_PIZZA =gql`
+query allPizza {
+  allPizza {
+    _id
+    foodName
+    description
+    image
+    price
+    quantity
+    category {
+      _id
+      categoryName
+    }
+  }
+}`
+
+export const QUERY_ALL_SIDEORDERS =gql`
+query allSideOrder {
+  allSideOrder {
+    _id
+    foodName
+    description
+    image
+    price
+    quantity
+    category {
+      _id
+      categoryName
+    }
+  }
+}`
+
+export const QUERY_ALL_BEVERAGE =gql`
+query allBeverage {
+  allBeverage {
+    _id
+    foodName
+    description
+    image
+    price
+    quantity
+    category {
+      _id
+      categoryName
+    }
+  }
+}`
+
 export const QUERY_ALL_FOOD =gql`
 query allFood {
   allFood {

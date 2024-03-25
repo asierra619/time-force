@@ -28,8 +28,8 @@ mutation login($email: String!, $password: String!) {
 `;
 
 export const SAVE_TO_CART = gql`
-mutation saveToCart($foodName: String!) {
-    saveToCart(foodName: $foodName) {
+mutation saveToCart($foodName: String!, $price: float!) {
+    saveToCart(foodName: $foodName, price: $price) {
       _id
       firstName
       lastName

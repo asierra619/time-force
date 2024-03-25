@@ -6,7 +6,11 @@ const cartSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Food'
     }
-  ]
+  ],
+  price:{
+    type: Number,
+    required: true
+  }
 });
 
 //const Cart = model('Cart', cartSchema);

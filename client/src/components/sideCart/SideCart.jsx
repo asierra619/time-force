@@ -6,10 +6,16 @@ export default function SideCart() {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
   console.log(userData);
-
+  const userCart = userData.cart;
+  console.log("userCart: ", userCart);
   const [delelteCartItem, { error }] = useMutation(DELETE_FROM_CART, {
     refetchQueries: [QUERY_ME, "me"],
   });
+
+  const handleOrderSubmit = (event) => {
+    event,preventDefault
+  }
+
 
   const handleDeleteCartItem = async (event, foodName) => {
     event.preventDefault();
@@ -32,22 +38,21 @@ export default function SideCart() {
     }
   };
   // optional
-  const handleWishlistToCart =(event,foodName) =>{
+  const handleWishlistToCart = (event, foodName) => {
     event.preventDefault();
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
       return false;
     }
-  }
+  };
   //optional
-  const handleCartToWishlist =(event,foodName) =>{
+  const handleCartToWishlist = (event, foodName) => {
     event.preventDefault();
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
       return false;
     }
-  }
-
+  };
 
   if (loading) {
     return <div>Loading...Cart!</div>;
@@ -56,7 +61,19 @@ export default function SideCart() {
   return (
     <div className="sideCart-container">
       {userData.cart.length > 0 ? (
-        <div></div>
+        <>
+        <div className="populatedCart-container">
+          {userCart.map((items) => {
+            return (
+              <div className="cartItems">
+                <div>{items.foodName}</div>
+                <div>{items.price}</div>
+              </div>
+            );
+          })}
+        </div>
+        <button onClick={()=> handleDeleteCartItem}>Confirm Order</button>
+        </>
       ) : (
         <div className="emptyCart-container">
           <img

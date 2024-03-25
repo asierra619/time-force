@@ -1,14 +1,13 @@
 import { gql } from '@apollo/client';
 
-//export mutations
-
 export const CREATE_USER = gql`
 mutation createUser($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
     createUser(firstName: $firstName, lastName: $lastName ,email: $email, password: $password) {
       token
       user {
         _id
-        username
+        firstName
+        lastName
       }
     }
   }
@@ -21,12 +20,13 @@ mutation login($email: String!, $password: String!) {
       user {
         _id
         email
-        username
+        firstName
+        lastName
       }
     }
   }
 `;
-
+/*
 export const SAVE_TO_CART = gql`
 mutation saveToCart(args) {
     saveToCart(args) {
@@ -77,4 +77,5 @@ mutation saveToWishlish($foodName: String!) {
         }
     }
 }
-`;
+`;'
+*/

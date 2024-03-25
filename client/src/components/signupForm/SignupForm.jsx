@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 import { CREATE_USER } from "../../utils/mutations";
 
-const signupForm = () => {
+const SignupForm = () => {
   const [userFormData, setUserFormData] = useState({
     firstName: "",
     lastName: "",
@@ -29,6 +29,14 @@ const signupForm = () => {
 
       console.log("SignUp mutation return data: ", data);
       Auth.login(data.createUser.token);
+
+      setUserFormData({
+        firstName: '',
+        lastName:'',
+        email: '',
+        password: '',
+      });
+      
     } catch (err) {
       console.error(err);
     }
@@ -36,39 +44,40 @@ const signupForm = () => {
 
   return (
     <div>
-      <span>login</span>
-      <form onSubmit={handleFormSubmit}>
+      <span>Sign Up Form</span>
+      <form>
       <input
-          value={firstName}
+          value={userFormData.firstName}
           name="firstName"
           onChange={handleFormChange}
           type="text"
           placeholder="first name"
         />
          <input
-          value={lastName}
+          value={userFormData.lastName}
           name="lastName"
           onChange={handleFormChange}
           type="text"
           placeholder="last name"
         />
         <input
-          value={email}
+          value={userFormData.email}
           name="email"
           onChange={handleFormChange}
           type="email"
           placeholder="email"
         />
        <input
-          value={password}
+          value={userFormData.password}
           name="password"
           onChange={handleFormChange}
           type="text"
           placeholder="password"
         />
+        <button onClick={handleFormSubmit}>Submit</button>
       </form>
     </div>
   );
 };
 
-export default signupForm;
+export default SignupForm;

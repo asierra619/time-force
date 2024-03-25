@@ -40,17 +40,17 @@ type Auth {
 
 type Query {
     me: User
-    allCategory: Category
-    allFood: Food
-    allUsers: User
+    allCategory: [Category]
+    allFood: [Food]
+    allUsers: [User]
 }
 
 type Mutation {
     createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    saveToCart(args: ID): User #added ID to debug - change as needed
+   #saveToCart(args: ID): User #added ID to debug - change as needed
     deleteFromCart(foodName: String!): User
-    saveToWishlist(args: ID): User #added ID to debug - change as needed
+   #saveToWishlist(args: ID): User #added ID to debug - change as needed
     deleteFromWishlist(foodName: String!): User
 }
 `;

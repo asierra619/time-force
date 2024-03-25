@@ -13,9 +13,8 @@ export default function SideCart() {
   });
 
   const handleOrderSubmit = (event) => {
-    event,preventDefault
-  }
-
+    event.preventDefault();
+  };
 
   const handleDeleteCartItem = async (event, foodName) => {
     event.preventDefault();
@@ -62,17 +61,18 @@ export default function SideCart() {
     <div className="sideCart-container">
       {userData.cart.length > 0 ? (
         <>
-        <div className="populatedCart-container">
-          {userCart.map((items) => {
-            return (
-              <div className="cartItems">
-                <div>{items.foodName}</div>
-                <div>{items.price}</div>
-              </div>
-            );
-          })}
-        </div>
-        <button onClick={()=> handleDeleteCartItem}>Confirm Order</button>
+          <span>{userData.cart.length > 1 ? "Order" : "Orders"}</span>
+          <div className="populatedCart-container">
+            {userCart.map((items) => {
+              return (
+                <div className="cartItems">
+                  <div>{items.foodName}</div>
+                  <div>{items.price}</div>
+                </div>
+              );
+            })}
+          </div>
+          <button onClick={() => handleDeleteCartItem}>Confirm Order</button>
         </>
       ) : (
         <div className="emptyCart-container">

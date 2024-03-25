@@ -15,6 +15,11 @@ export default function MenuPage() {
   const allFood = data?.allFood || {};
   console.log(allFood);
   */
+
+  const [saveToCart, { error }] = useMutation(SAVE_TO_CART, {
+    refetchQueries: [QUERY_ME, "me"],
+  });
+
   const { loading: loadingPizza, data: dataPizza } = useQuery(QUERY_ALL_PIZZA);
   const allPizza = dataPizza?.allPizza || {};
   console.log("allPizza", allPizza);
@@ -28,6 +33,18 @@ export default function MenuPage() {
     useQuery(QUERY_ALL_BEVERAGE);
   const allBeverage = dataBeverage?.allBeverage || {};
   console.log("allBeverage", allBeverage);
+
+ const handleSaveToCart = async (event,foodName) => {
+   event.preventDefault();
+      
+   try {
+     const {data} = saveToCart({
+      variables : {foodName}
+     })
+   } catch (error) {
+    console.log(error) 
+   }
+ }
 
   if (loadingPizza || loadingSideOrder || loadingBeverage) {
     return <div>loaing...</div>;
@@ -44,7 +61,7 @@ export default function MenuPage() {
                 <div>{item.foodName}</div>
                 <img src={item.image} alt={item.description}/>
                 <div>{`price: ${item.price}$`}</div>
-                <span></span>
+                <button onClick={()=>handleSaveToCart(item.foodName)}>Add to Cart</button>
               </div>
             );
           })
@@ -58,7 +75,7 @@ export default function MenuPage() {
                 <div>{item.foodName}</div>
                 <img src={item.image} alt={item.description}/>
                 <div>{`price: ${item.price}$`}</div>
-                <span></span>
+                <button onClick={()=>handleSaveToCart(item.foodName)}>Add to Cart</button>
               </div>
             );
           })
@@ -72,7 +89,7 @@ export default function MenuPage() {
                 <div>{item.foodName}</div>
                 <img src={item.image} alt={item.description}/>
                 <div>{`price: ${item.price}$`}</div>
-                <span></span>
+                <button onClick={()=>handleSaveToCart(item.foodName)}>Add to Cart</button>
               </div>
             );
           })

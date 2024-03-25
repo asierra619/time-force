@@ -3,7 +3,7 @@ type User {
     _id: ID!
     firstName: String!
     lastName: String!
-    email: String
+    email: String!
     password: String!
     createdAt: String
     timeStamp: String

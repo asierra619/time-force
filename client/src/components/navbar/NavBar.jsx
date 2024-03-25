@@ -12,7 +12,6 @@ export default function NavBar() {
   const [formTab, setFormTab] = useState("login");
 // query_me will use data from context after login
   const { loading, data } = useQuery(QUERY_ME);
- 
   const userData = data?.me || {}
   console.log("userData", userData)
 
@@ -22,16 +21,12 @@ export default function NavBar() {
     } else {setShowForm(false)}
   }
 
-  if(loading) {
-    return(<div>loading...</div>)
-  }
-
   return (
     <>
       <div>title</div>
       {Auth.loggedIn() ? (
         <>
-          <span>{`${'Welcome! ' + userData.firstName + ' '+ userData.lastName}`}</span>       
+          <span>{`${userData.firstName + userData.lastName}`}</span>       
           <button onClick={Auth.logout}>Log Out</button>
         </>
       ) : (

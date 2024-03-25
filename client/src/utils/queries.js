@@ -10,9 +10,10 @@ query me {
     email
     createdAt
     cart {
-      food {
-        foodName
-      }
+      food
+    }
+    wishlist{
+      food
     }
   }
 }

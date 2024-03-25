@@ -1,6 +1,7 @@
 import "./SideCart.css";
 import { QUERY_ME } from "../../utils/queries";
 import { useQuery, useMutation } from "@apollo/client";
+import {DELETE_FROM_CART} from '../../utils/mutations'
 
 export default function SideCart() {
   const { loading, data } = useQuery(QUERY_ME);

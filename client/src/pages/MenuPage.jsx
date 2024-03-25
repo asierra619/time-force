@@ -9,6 +9,7 @@ import {
 } from "../utils/queries";
 import { SAVE_TO_CART, DELETE_FROM_CART } from "../utils/mutations";
 import SideMenu from "../components/sideMenu/sideMenu.jsx";
+import SideCart from '../components/sideCart/SideCart.jsx'
 
 export default function MenuPage() {
   /*
@@ -110,7 +111,7 @@ export default function MenuPage() {
         )}
       </div>
 
-      <div>side cart container placeholder</div>
+      <SideCart/>
     </div>
   );
 }

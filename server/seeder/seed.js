@@ -1,5 +1,5 @@
 const db = require('../config/connection');
-const { User, Category, Food } = require('../models');
+const { User, Category, Food, Category } = require('../models');
 const { userSeeds, categorySeeds, foodSeeds } = require('./seeds/index.js')
 const cleanDB = require('./cleanDB');
 
@@ -13,8 +13,21 @@ db.once('open', async () => {
 
     await User.create(userSeeds);
     await Category.create(categorySeeds);
-    await Food.create(foodSeeds);
+  //  await Food.create(foodSeeds);
 
+    for (let i = 0; i < foodSeeds.length; i++){
+      const category = await Category.findOne({foodName:foodSeeds[i].foodName})
+      const food = await Food.create(foodSeeds[i])
+      const addCategoryToFood = await Food.findByIdAndUpdate({
+        _id : food._id
+      },{
+        $addToSet:{
+          category:{
+            _id: category._id
+          }
+        }
+      })
+    }
   } catch (err) {
     console.error(err);
     process.exit(1);
@@ -25,7 +38,7 @@ db.once('open', async () => {
 });
 
 /*    
-for (let i = 0; i < thoughtSeeds.length; i++) {
+for (let i = 0; i < foodSeeds.length; i++) {
       const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
       const user = await User.findOneAndUpdate(
         { username: thoughtAuthor },

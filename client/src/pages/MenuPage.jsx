@@ -8,6 +8,8 @@ import {
   QUERY_ALL_BEVERAGE,
 } from "../utils/queries";
 import { SAVE_TO_CART, DELETE_FROM_CART } from "../utils/mutations";
+import SideMenu from "../components/sideMenu/sideMenu.jsx"
+
 
 export default function MenuPage() {
   /*
@@ -52,8 +54,9 @@ export default function MenuPage() {
 
   return (
     <div>
-      <div>Side Menu Navbar placeholder</div>
+      <SideMenu/>
       <div>
+        <div id={"pizza"}>Pizza</div>
         {allPizza.length ? (
           allPizza.map((item) => {
             return (
@@ -68,6 +71,7 @@ export default function MenuPage() {
         ) : (
           <div>Sorry, No Pizza is in Stock!</div>
         )}
+         <div id={"side-orders"}>Side Orders</div>
         {allSideOrder.length ? (
           allSideOrder.map((item) => {
             return (
@@ -82,6 +86,7 @@ export default function MenuPage() {
         ) : (
           <div>Sorry, No Pizza is in Stock!</div>
         )}
+        <div id={"beverage"}>Beverage</div>
         {allBeverage.length ? (
           allBeverage.map((item) => {
             return (

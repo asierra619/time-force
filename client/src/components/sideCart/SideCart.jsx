@@ -1,20 +1,36 @@
 import "./SideCart.css";
 import { QUERY_ME } from "../../utils/queries";
 import { useQuery, useMutation } from "@apollo/client";
-import {DELETE_FROM_CART} from '../../utils/mutations'
+import { DELETE_FROM_CART } from "../../utils/mutations";
 
 export default function SideCart() {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
-  console.log(userData);
+  console.log("userData: ", userData);
   const userCart = userData.cart;
   console.log("userCart: ", userCart);
+
+  let paymentDetails ={};
+  if (userCart.length > 0) {
+    let subtotal = 0;
+    for (let i; i < userCart.length; i++) {
+      subtotal = subtotal + userCart[i].price;
+    }
+    subtotal.toFixed(2);
+    const tax = (subtotal * 0.105).toFixed(2);
+    const total = (subtotal + tax).toFixed(2);
+    paymentDetails = {subtotal:subtotal, tax:tax, total:total};
+    return paymentDetails;
+  }
+  console.log(paymentDetails);
+  
   const [delelteCartItem, { error }] = useMutation(DELETE_FROM_CART, {
     refetchQueries: [QUERY_ME, "me"],
   });
 
   const handleOrderSubmit = (event) => {
     event.preventDefault();
+    //Todo: add queries to combine with the stripe and jump to payment page
   };
 
   const handleDeleteCartItem = async (event, foodName) => {
@@ -28,6 +44,7 @@ export default function SideCart() {
       console.log(error);
     }
   };
+
   // optional
   // wishlist func is the function valid after user logged in
   const handleDeleteWishlistItem = (event, foodName) => {
@@ -69,11 +86,17 @@ export default function SideCart() {
                 <div className="cartItems">
                   <div>{items.foodName}</div>
                   <div>{items.price}</div>
+                  <button onClick={() => handleDeleteCartItem(items.foodName)}>
+                    delete from cart icon
+                  </button>
                 </div>
               );
             })}
           </div>
-          <button onClick={() => handleDeleteCartItem}>Confirm Order</button>
+          <span>{`${paymentDetails.subtotal}$`}</span>
+          <span>{`${paymentDetails.tax}$`}</span>
+          <span>{`${paymentDetails.total}$`}</span>
+          <button onClick={() => handleOrderSubmit()}>Confirm Order</button>
         </>
       ) : (
         <div className="emptyCart-container">

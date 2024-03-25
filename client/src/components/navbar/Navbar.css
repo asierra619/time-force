@@ -5,3 +5,8 @@
 .tab-hidden {
     display: none;
 }
+
+.formTab-highlight {
+   font-weight: bold;
+   font-size: larger;
+}

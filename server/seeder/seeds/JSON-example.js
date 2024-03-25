@@ -13,5 +13,5 @@ const foodSchema = [{
     "image":"",
     "price":"",
     "quantity":"",
-    "category":""
+    "categoryName":""
 }]

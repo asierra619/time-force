@@ -1,8 +1,50 @@
-[{
-    "foodName":"Classic Cheese Pizza",
-    "description":"contains two kinds of cheese",
-    "image":"https://www.recipetineats.com/wp-content/uploads/2023/05/Garlic-cheese-pizza_9.jpg",
-    "price":"11.95",
-    "quantity":"1000",
-    "categoryName":"pizza"
-}]
+[
+    {
+        "foodName": "Classic Cheese Pizza",
+        "description": "homemade-style pizza dough and contains two kinds of cheese",
+        "image": "https://www.recipetineats.com/wp-content/uploads/2023/05/Garlic-cheese-pizza_9.jpg",
+        "price": "10.95",
+        "quantity": "1000",
+        "categoryName": "pizza"
+    },
+    {
+        "foodName": "Coca-Cola",
+        "description": "Coca-Cola 500mL",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_7819ee30-1f78-46ee-a21c-d2096f99ba42?wid=1200&hei=1200&qlt=80&fmt=webp",
+        "price": "2.95",
+        "quantity": "1000",
+        "categoryName": "beverage"
+    },
+    {
+        "foodName": "Pepsi Cola",
+        "description": "Pepsi Cola 500mL",
+        "image": "https://target.scene7.com/is/image/Target/GUEST_857e6ec2-76b4-4b70-9ffd-1ef223ce4613?wid=1200&hei=1200&qlt=80&fmt=webp",
+        "price": "2.95",
+        "quantity": "1000",
+        "categoryName": "beverage"
+    },
+    {
+        "foodName": "French Fries",
+        "description": "medium size 8oz french fries",
+        "image": "https://media.istockphoto.com/id/1443993866/photo/french-fries-with-ketchup-and-cocktail-sauce.jpg?s=612x612&w=0&k=20&c=URpOsc5tds8tOfxK4ZO3Tkx6mwLho7fL_pTBSNdziBU=",
+        "price": "2.95",
+        "quantity": "1000",
+        "categoryName": "side orders"
+    },
+    {
+        "foodName": "Chicken Wing",
+        "description": "6pc chicken wings",
+        "image": "https://www.foodnetwork.com/content/dam/images/food/fullset/2019/2/19/1/FN_Air-Fryer-Chicken-Wings-H_s4x3.jpg",
+        "price": "6.95",
+        "quantity": "1000",
+        "categoryName": "side orders"
+    },
+    {
+        "foodName": "Pepperoni Pizza",
+        "description": "homemade-style pizza dough, mozzarella cheese, and salty pepperoni",
+        "image": "https://www.iheartnaptime.net/wp-content/uploads/2023/04/Pepperoni-pizza.jpg",
+        "price": "12.95",
+        "quantity": "1000",
+        "categoryName": "pizza"
+    }
+]

@@ -27,3 +27,19 @@ query allUsers {
     email
   }
 }`;
+
+export const QUERY_ALL_FOOD =gql`
+query allFood {
+  allFood {
+    _id
+    foodName
+    description
+    image
+    price
+    quantity
+    category {
+      _id
+      categoryName
+    }
+  }
+}`

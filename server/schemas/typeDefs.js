@@ -44,6 +44,9 @@ type Query {
     allCategory: [Category]
     allFood: [Food]
     allUsers: [User]
+    allPizza: [Food]
+    allSideOrder: [Food]
+    allBeverage: [Food]
 }
 
 type Mutation {

@@ -3,12 +3,17 @@ const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    // cart and wish schema are sub-docs adhere to user model/ don't need to populate
     me: async (parent, args, context) => {
       console.log("resolver: ME (context.user)", context.user);
       if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id });
-        console.log(userData);
-        return userData;
+        try {
+          const userData = await User.findOne({ _id: context.user._id });
+          console.log(userData);
+          return userData;
+        } catch (err) {
+          console.log(err);
+        }
       } else {
         throw AuthenticationError;
       }
@@ -16,7 +21,7 @@ const resolvers = {
     allUsers: async (parent, args) => {
       console.log("resolver: query all users");
       try {
-        const users = await User.find().populate('cart');
+        const users = await User.find().populate("cart");
         console.log(users);
         return users;
       } catch (error) {
@@ -37,7 +42,43 @@ const resolvers = {
     allFood: async (parent, args) => {
       console.log("resolver: query all food");
       try {
-        const food = await Food.find().populate('category');
+        const food = await Food.find().populate("category");
+        return food;
+      } catch (error) {
+        console.log(error);
+        console.log("something went wrong with the query");
+      }
+    },
+    allPizza: async (parent, args) => {
+      console.log("resolver: query all Pizza");
+      try {
+        const category = await Category.findOne({categoryName:"pizza"})
+        console.log("Category", category)
+        console.log("Category._id", category._id)
+        const food = await Food.find({category: category._id}).populate("category");
+        console.log("data return in resolver: ",food)
+        return food;
+      } catch (error) {
+        console.log(error);
+        console.log("something went wrong with the query");
+      }
+    },
+    allSideOrder: async (parent, args) => {
+      console.log("resolver: query all Side orders");
+      try {
+        const category = await Category.findOne({categoryName:"side orders"})
+        const food = await Food.find({category:category._id}).populate("category");
+        return food;
+      } catch (error) {
+        console.log(error);
+        console.log("something went wrong with the query");
+      }
+    },
+    allBeverage: async (parent, args) => {
+      console.log("resolver: query all beverages");
+      try {
+        const category = await Category.findOne({categoryName:"beverage"})
+        const food = await Food.find({category:category._id}).populate("category");
         return food;
       } catch (error) {
         console.log(error);
@@ -115,7 +156,7 @@ const resolvers = {
         throw AuthenticationError;
       }
     },
-  // optional
+    // optional
     saveToWishlist: async (parent, args, context) => {
       if (context.user) {
         const addToWishlist = await User.findOneAndUpdate(

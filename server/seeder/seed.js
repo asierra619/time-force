@@ -11,14 +11,15 @@ db.once('open', async () => {
     await cleanDB('Category', 'categories');
     await cleanDB('Food','foods')
 
-    await User.create(userSeeds);
+    const user = await User.create(userSeeds);
+    console.log(user)
     await Category.create(categorySeeds);
    // await Food.create(foodSeeds);
 
     for (let i = 0; i < foodSeeds.length; i++){
-     // console.log(foodSeeds[i])
+      // console.log(foodSeeds[i])
       const category = await Category.findOne({categoryName:foodSeeds[i].categoryName})
-      //console.log(category);
+      // console.log(category);
       const food = await Food.create(foodSeeds[i])
       const addCategoryToFood = await Food.findByIdAndUpdate({
         _id : food._id

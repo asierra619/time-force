@@ -34,7 +34,7 @@
     {
         "foodName": "Chicken Wings",
         "description": "10pc chicken wings",
-        "image": "https://www.thecookierookie.com/wp-content/uploads/2018/12/baked-chicken-wings-reshoot-1024x1536.jpg",
+        "image": "https://www.seriouseats.com/thmb/zNzv_FjRF4hEbpawVKJDC-JU0g8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/the-best-buffalo-wings-oven-fried-wings-recipe-hero-dcc412b6e26444b4a2112d4402f039ae.JPG",
         "price": "8.95",
         "quantity": "1000",
         "categoryName": "side orders"
@@ -44,6 +44,38 @@
         "description": "homemade-style pizza dough, mozzarella cheese, and salty pepperoni",
         "image": "https://www.iheartnaptime.net/wp-content/uploads/2023/04/Pepperoni-pizza.jpg",
         "price": "12.95",
+        "quantity": "1000",
+        "categoryName": "pizza"
+    },
+    {
+        "foodName": " Garlic Breadsticks",
+        "description": "fluffy bread infused with aromatic garlic and herbs, crispy outside, soft inside",
+        "image": "https://www.yellowblissroad.com/wp-content/uploads/2021/11/Homemade-Breadsticks-lg-21.jpg",
+        "price": "6.95",
+        "quantity": "1000",
+        "categoryName": "side orders"
+    },
+    {
+        "foodName": "Chocolate Chip Cookie",
+        "description": "Soft, chewy, and loaded with chocolate chips",
+        "image": "https://beyondfrosting.com/wp-content/uploads/2019/03/Chewy-Chocolate-Chip-Cookies-207-768x1152.jpg",
+        "price": "2.95",
+        "quantity": "1000",
+        "categoryName": "side orders"
+    },
+    {
+        "foodName": "The Works Pizza",
+        "description": "A mouthwatering medley of savory toppings atop a crispy crust, oozing with melted cheese",
+        "image": "https://hips.hearstapps.com/del.h-cdn.co/assets/16/15/1600x1066/gallery-1460731281-delish-skillet-pizza-the-works-1.jpg?resize=1200:*",
+        "price": "14.95",
+        "quantity": "1000",
+        "categoryName": "pizza"
+    },
+    {
+        "foodName": "Mexican Pizza",
+        "description": "topped with savory beans and melted cheese. A flavorful twist on a classic favorite",
+        "image": "https://bitesofflavor.com/wp-content/uploads/2016/10/Pulled-Pork-Mexican-Pizza-600x427.jpg",
+        "price": "13.95",
         "quantity": "1000",
         "categoryName": "pizza"
     }

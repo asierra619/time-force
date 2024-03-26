@@ -24,7 +24,7 @@
 /* Guest/  or username after login */
 .navbar-span {
   flex: 1;
-  margin: 0 5% 0 25%;
+  margin: 0 0% 0 20%;
   font-size: larger;
   color: white;
 }

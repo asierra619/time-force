@@ -54,8 +54,8 @@ export default function MenuPage() {
   }
 
   return (
+    <>
     <div>
-      <SideMenu />
       <div>
         <div id={"pizza"}>Pizza</div>
         {allPizza.length ? (
@@ -116,7 +116,10 @@ export default function MenuPage() {
         )}
       </div>
 
-      { <SideCart/> }
+      
     </div>
+    <SideCart/>
+    <SideMenu />
+    </>
   );
 }

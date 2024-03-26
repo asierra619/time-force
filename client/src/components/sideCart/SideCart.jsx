@@ -2,7 +2,7 @@ import "./SideCart.css";
 import { QUERY_ME } from "../../utils/queries";
 import { useQuery, useMutation } from "@apollo/client";
 import { DELETE_FROM_CART } from "../../utils/mutations";
-import { index } from "../../../../server/models/cart";
+
 
 export default function SideCart() {
   const { loading, data } = useQuery(QUERY_ME);
@@ -88,7 +88,7 @@ export default function SideCart() {
           <div className="populatedCart-container">
             {userCart.map((items) => {
               return (
-                <div key={index} className="cartItems">
+                <div key={items._id} className="cartItems">
                   <div>{items.foodName}</div>
                   <div>{items.price}</div>
                   <button onClick={() => handleDeleteCartItem(items.foodName)}>

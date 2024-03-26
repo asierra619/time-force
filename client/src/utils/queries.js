@@ -9,6 +9,7 @@ query me {
     lastName
     email
     cart {
+      foodName
       price
     }
   }

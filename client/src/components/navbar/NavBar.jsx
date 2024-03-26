@@ -28,7 +28,7 @@ export default function NavBar() {
 
   return (
     <>
-      <div>Project Title</div>
+      <div id={"top"}>Project Title</div>
       {Auth.loggedIn() ? (
         <>
           <span>{`${'Welcome! ' + userData.firstName + ' '+ userData.lastName}`}</span>       
@@ -36,7 +36,8 @@ export default function NavBar() {
         </>
       ) : (
         <div>
-          <img src=""></img>
+          <span>Hello, Guest!</span>
+          <img src="" alt="login icon"></img>
           <button onClick={() => toggleForm()}>Login / Sign Up</button>
         </div>
       )}

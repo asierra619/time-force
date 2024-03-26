@@ -12,7 +12,7 @@ export default function NavBar() {
   const [formTab, setFormTab] = useState("login");
 // query_me will use data from context after login
   const { loading, data } = useQuery(QUERY_ME);
- 
+
   const userData = data?.me || {}
   console.log("userData", userData)
 

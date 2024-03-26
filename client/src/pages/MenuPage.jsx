@@ -64,7 +64,7 @@ export default function MenuPage() {
               <div key={item.foodName} className="foodCard-container">
                 <div>{item.foodName}</div>
                 <img src={item.image} alt={item.description} />
-                <div>{`price: ${item.price}$`}</div>
+                <div>{`price: $${item.price}`}</div>
                 {Auth.loggedIn() ? (
                   <button onClick={() =>handleSaveToCart({foodName: item.foodName,price: item.price,})}>
                     Add to Cart
@@ -83,7 +83,7 @@ export default function MenuPage() {
               <div key={item.foodName} className="foodCard-container">
                 <div>{item.foodName}</div>
                 <img src={item.image} alt={item.description} />
-                <div>{`price: ${item.price}$`}</div>
+                <div>{`price: $${item.price}`}</div>
                 {Auth.loggedIn() ? (
                   <button onClick={() =>handleSaveToCart({foodName: item.foodName,price: item.price,})}>
                     Add to Cart
@@ -102,7 +102,7 @@ export default function MenuPage() {
               <div key={item.foodName} className="foodCard-container">
                 <div>{item.foodName}</div>
                 <img src={item.image} alt={item.description} />
-                <div>{`price: ${item.price}$`}</div>
+                <div>{`price: $${item.price}`}</div>
                 {Auth.loggedIn() ? (
                   <button onClick={() =>handleSaveToCart({foodName: item.foodName,price: item.price,})}>
                     Add to Cart

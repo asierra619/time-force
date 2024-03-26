@@ -5,18 +5,19 @@ import { DELETE_FROM_CART } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
 
+
 export default function SideCart() {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
   // console.log("userData: ", userData);
   const userCart = userData?.cart || {};
-  console.log("userCart: ", userCart);
+ // console.log("userCart: ", userCart);
 
   let paymentDetails = [];
 
   if (userCart.length > 0) {
-    console.log("userCart length:", userCart.length);
-    console.log("starting for loop");
+   console.log("userCart length:", userCart.length);
+   console.log("starting for loop");
     let subtotal = 0;
     for (let i = 0; i < userCart.length; i++) {
       console.log("useCart[i].price: ", userCart[i].price);
@@ -107,7 +108,7 @@ export default function SideCart() {
       ) : (
         <div className="emptyCart-container">
           <img
-            src="../../../assets/images/shoppingBag.png"
+            src="https://i.fbcd.co/products/original/667ca7502e4e218f01e4fbb26e01e2fc7fe17370f64bf444f60818b9d1b2c2b2.jpg"
             alt={"shopping bag"}
           />
           {Auth.loggedIn() ? (
@@ -122,3 +123,6 @@ export default function SideCart() {
     </div>
   );
 }
+
+// alt shopping bag picture https://i.fbcd.co/products/original/667ca7502e4e218f01e4fbb26e01e2fc7fe17370f64bf444f60818b9d1b2c2b2.jpg
+// import{} from '../../../assets/images/shoppingBag.png'

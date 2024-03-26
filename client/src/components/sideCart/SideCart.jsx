@@ -12,17 +12,19 @@ export default function SideCart() {
   console.log("userCart: ", userCart);
 
   let paymentDetails = [];
+
   if (userCart.length > 0) {
     console.log("userCart length:", userCart.length);
     console.log("starting for loop");
     let subtotal = 0;
-    for (let i; i < userCart.length; i++) {
-      console("useCart[i].price: ", userCart[i].price);
+    for (let i = 0; i < userCart.length; i++) {
+      console.log("useCart[i].price: ", userCart[i].price);
       subtotal += userCart[i].price;
     }
-    subtotal.toFixed(2);
-    const tax = (subtotal * 0.105).toFixed(2);
-    const total = parseFloat(subtotal + tax).toFixed(2);
+    subtotal = parseFloat(subtotal.toFixed(2));
+    const tax = parseFloat((subtotal * 0.105).toFixed(2));
+    const total = parseFloat((subtotal + tax).toFixed(2));
+  
     paymentDetails = [subtotal, tax, total];
     console.log("payment details: ", paymentDetails);
   }

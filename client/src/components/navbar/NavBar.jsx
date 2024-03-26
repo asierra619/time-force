@@ -3,7 +3,7 @@ import { useState } from "react";
 import LoginForm from "../loginForm/LoginForm";
 import SignupForm from "../signupForm/SignupForm";
 import Auth from "../../utils/auth";
-import "./NavBar.css";
+import "./Navbar.css";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from '../../utils/queries';
 
@@ -12,7 +12,7 @@ export default function NavBar() {
   const [formTab, setFormTab] = useState("login");
 // query_me will use data from context after login
   const { loading, data } = useQuery(QUERY_ME);
- 
+
   const userData = data?.me || {}
   console.log("userData", userData)
 

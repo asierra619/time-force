@@ -12,7 +12,7 @@ import SideMenu from "../components/sideMenu/sideMenu.jsx";
 import SideCart from "../components/sideCart/SideCart.jsx";
 
 export default function MenuPage() {
-  /*
+  /* //testing data
   const { loading, data } = useQuery(QUERY_ALL_FOOD);
   const allFood = data?.allFood || {};
   console.log(allFood);

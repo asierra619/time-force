@@ -3,9 +3,10 @@ import { useState } from "react";
 import LoginForm from "../loginForm/LoginForm";
 import SignupForm from "../signupForm/SignupForm";
 import Auth from "../../utils/auth";
-import "./Navbar.css";
+import "./index.css";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from '../../utils/queries';
+
 
 export default function NavBar() {
   const [showForm, setShowForm] = useState(false);
@@ -27,43 +28,51 @@ export default function NavBar() {
   }
 
   return (
+    <>
     <div className="navbar-container">
-      <div id={"top"}>Project Title</div>
+      <div id={"top"} className="title">Time Force Pizzaria</div>
       {Auth.loggedIn() ? (
-        <>
-          <span>{`${'Welcome! ' + userData.firstName + ' '+ userData.lastName}`}</span>       
-          <button onClick={Auth.logout}>Log Out</button>
-        </>
+      <>
+        <span className="navbar-span">{`${'Welcome back! ' + userData.firstName + ' '+ userData.lastName}`}</span>
+        <div className="login-logout-icon-button-container" onClick={Auth.logout}>
+          <img className="logout-icon" src="./logout-icon.png" alt="logout icon"></img>       
+          <button className="login-logout-button" >Log Out</button>
+        </div>
+      </>
       ) : (
-        <div>
-          <span>Hello, Guest!</span>
-          <img src="" alt="login icon"></img>
-          <button onClick={() => toggleForm()}>Login / Sign Up</button>
+      <>
+        <span className="navbar-span">Hello, Guest!</span>
+        <div className="login-logout-icon-button-container" onClick={() => toggleForm()}>
+          <img className="login-icon" src="./login-icon2.png" alt="login icon"></img>
+          <button className="login-logout-button" >Login / Sign Up</button>
         </div>
+      </>
       )}
-      <div className={showForm ? "" : "form-hidden"}>
-        <div className="form-container">
-          <div className="tab-container">
-            <button onClick={() => setFormTab("login")} className={formTab === "login" ? "formTab-highlight" : ""}>Login</button>
-            <button onClick={() => setFormTab("signUp")}  className={
-              formTab === "signUp" ? "formTab-highlight" : ""}>Sign Up</button>
-          </div>
-          <div
-            key={1}
-            className={formTab === "login" ? "" : "tab-hidden"}
-          >
-            <LoginForm />
-          </div>
-          <div
-            key={2}
-            className={formTab === "signUp" ? "" : "tab-hidden"}
-          >
-            <SignupForm />
-          </div>
-          <button onClick={() => setShowForm(false)}>x</button>
-        </div>
-      </div>
+
     </div>
+    <div className={showForm ? "form-show" : "form-hidden"}>
+          <div className="form-container">
+            <div className="tab-container">
+              <button  onClick={() => setFormTab("login")} className={formTab === "login" ? "formTab-highlight formTabs" : "formTabs"}>Login</button>
+              <button  onClick={() => setFormTab("signUp")}  className={
+                formTab === "signUp" ? "formTab-highlight formTabs" : "formTabs"}>Sign Up</button>
+            </div>
+            <div
+              key={1}
+              className={formTab === "login" ? "" : "tab-hidden"}
+            >
+              <LoginForm />
+            </div>
+            <div
+              key={2}
+              className={formTab === "signUp" ? "" : "tab-hidden"}
+            >
+              <SignupForm />
+            </div>
+            <button className="hide-form-btn" onClick={() => setShowForm(false)}>x</button>
+          </div>
+        </div>
+        </>
   );
 }
 

@@ -1,0 +1,26 @@
+.login-form-container {
+    display:flex;
+    flex-direction: column;
+}
+
+.login-form-span {
+    margin-top: 1%;
+    margin-bottom:2%
+}
+
+.login-form-content {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.form-input {
+    margin-bottom: 3%;
+}
+
+.form-submit-btn {
+    position: absolute;
+    right:0%;
+    bottom:3%;
+    height:12%  
+}

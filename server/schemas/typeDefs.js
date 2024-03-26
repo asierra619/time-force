@@ -27,6 +27,7 @@ type Food {
 }
 
 type Cart {
+    _id:ID
     foodName: String!
     price: Float!
 }
@@ -54,7 +55,7 @@ type Mutation {
     createUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     saveToCart(foodName: String!, price: Float!): User
-    deleteFromCart(foodName: String!): User
+    deleteFromCart(_id: ID!): User
     saveToWishlist(foodName: String!): User 
     deleteFromWishlist(foodName: String!): User
 }

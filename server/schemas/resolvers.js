@@ -147,12 +147,12 @@ const resolvers = {
       }
     },
 
-    deleteFromCart: async (parent, { foodName }, context) => {
-      console.log("hitting resolver deleteFromCart: {foodName}", foodName)
+    deleteFromCart: async (parent, { _id }, context) => {
+      console.log("hitting resolver deleteFromCart: {_id}", _id)
       if (context.user) {
         const deleteItem = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { cart: { foodName: foodName } } },
+          { $pull: { cart: { _id: _id } } },
           { new: true }
         );
         return deleteItem;

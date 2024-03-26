@@ -77,9 +77,9 @@ export default function SideCart() {
 
   return (
     <div className="sideCart-container">
-      {userData !== undefined && userData.cart.length > 0 ? (
+      {userCart !== undefined && userCart.length > 0 ? (
         <>
-          <span>{userData !== undefined && userData.cart.length > 1 ? "Order" : "Orders"}</span>
+          <span>{userCart !== undefined && userCart.length > 1 ? "Order" : "Orders"}</span>
           <div className="populatedCart-container">
             {userCart.map((items) => {
               return (

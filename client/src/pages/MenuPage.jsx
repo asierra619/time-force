@@ -65,16 +65,11 @@ export default function MenuPage() {
                 <div>{item.foodName}</div>
                 <img src={item.image} alt={item.description} />
                 <div>{`price: ${item.price}$`}</div>
-                <button
-                  onClick={() =>
-                    handleSaveToCart({
-                      foodName: item.foodName,
-                      price: item.price,
-                    })
-                  }
-                >
-                  Add to Cart
-                </button>
+                {Auth.loggedIn() ? (
+                  <button onClick={() =>handleSaveToCart({foodName: item.foodName,price: item.price,})}>
+                    Add to Cart
+                  </button>
+                ) : (<div></div>)}
               </div>
             );
           })
@@ -89,16 +84,11 @@ export default function MenuPage() {
                 <div>{item.foodName}</div>
                 <img src={item.image} alt={item.description} />
                 <div>{`price: ${item.price}$`}</div>
-                <button
-                  onClick={() =>
-                    handleSaveToCart({
-                      foodName: item.foodName,
-                      price: item.price,
-                    })
-                  }
-                >
-                  Add to Cart
-                </button>
+                {Auth.loggedIn() ? (
+                  <button onClick={() =>handleSaveToCart({foodName: item.foodName,price: item.price,})}>
+                    Add to Cart
+                  </button>
+                ) : (<div></div>)}
               </div>
             );
           })
@@ -126,7 +116,7 @@ export default function MenuPage() {
         )}
       </div>
 
-      {/* <SideCart/> */}
+      { <SideCart/> }
     </div>
   );
 }

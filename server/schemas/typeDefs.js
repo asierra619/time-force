@@ -27,7 +27,7 @@ type Food {
 }
 
 type Cart {
-    food: [Food]
+    foodName: String!
     price: Float!
 }
 

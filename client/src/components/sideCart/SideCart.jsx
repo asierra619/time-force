@@ -2,26 +2,30 @@ import "./SideCart.css";
 import { QUERY_ME } from "../../utils/queries";
 import { useQuery, useMutation } from "@apollo/client";
 import { DELETE_FROM_CART } from "../../utils/mutations";
+import { index } from "../../../../server/models/cart";
 
 export default function SideCart() {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
  // console.log("userData: ", userData);
   const userCart = userData?.cart || {};
- // console.log("userCart: ", userCart);
-
-  let paymentDetails ={};
-  if (userCart && userCart.length > 0 ) {
+  console.log("userCart: ", userCart);
+  
+  let paymentDetails =[];
+  if (userCart.length > 0 ) {
+    console.log("userCart length:", userCart.length)
+    console.log("starting for loop")
     let subtotal = 0;
     for (let i; i < userCart.length; i++) {
-      subtotal = subtotal + userCart[i].price;
+        console("useCart[i].price: ", userCart[i].price)
+      subtotal += userCart[i].price;
     }
     subtotal.toFixed(2);
     const tax = (subtotal * 0.105).toFixed(2);
-    const total = (subtotal + tax).toFixed(2);
-    paymentDetails = {subtotal:subtotal, tax:tax, total:total};
+    const total = parseFloat((subtotal + tax)).toFixed(2);
+    const paymentDetails = [subtotal, tax, total];
     console.log("payment details: ",paymentDetails);
-    return paymentDetails;
+    
   }
   
 
@@ -84,7 +88,7 @@ export default function SideCart() {
           <div className="populatedCart-container">
             {userCart.map((items) => {
               return (
-                <div className="cartItems">
+                <div key={index} className="cartItems">
                   <div>{items.foodName}</div>
                   <div>{items.price}</div>
                   <button onClick={() => handleDeleteCartItem(items.foodName)}>
@@ -94,9 +98,9 @@ export default function SideCart() {
               );
             })}
           </div>
-          <span>{`${paymentDetails.subtotal}$`}</span>
-          <span>{`${paymentDetails.tax}$`}</span>
-          <span>{`${paymentDetails.total}$`}</span>
+          <span>{`SubTotal: ${paymentDetails[0]}$`}</span>
+          <span>{`Tax: ${paymentDetails[1]}$`}</span>
+          <span>{`Total: ${paymentDetails[2]}$`}</span>
           <button onClick={() => handleOrderSubmit()}>Confirm Order</button>
         </>
       ) : (

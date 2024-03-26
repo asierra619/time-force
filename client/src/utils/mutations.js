@@ -44,8 +44,7 @@ export const SAVE_TO_CART = gql`
       firstName
       lastName
       cart {
-        _id
-        food
+        foodName
         price
       }
     }

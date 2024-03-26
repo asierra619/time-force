@@ -8,11 +8,8 @@ query me {
     firstName
     lastName
     email
-    createdAt
     cart {
-      food {
-        foodName
-      }
+      price
     }
   }
 }

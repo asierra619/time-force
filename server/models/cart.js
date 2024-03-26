@@ -1,11 +1,9 @@
 const { Schema, model } = require('mongoose');
 
 const cartSchema = new Schema({
-  food: 
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Food'
-    }
+  foodName:{
+    type:String,
+  }
   ,
   price:{
     type: Number,

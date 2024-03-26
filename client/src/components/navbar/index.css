@@ -1,0 +1,115 @@
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 10vh;
+  z-index: 1000; /* Adjust the z-index as needed : Elements with a higher z-index value are stacked above elements with lower z-index values*/
+  background-color: #da6837; /* Set your desired background color */
+  border-radius: 2%;
+}
+
+.title {
+  flex: 2;
+  align-self: center;
+  margin-left: 5%;
+  font-size: larger;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+  color: rgb(238, 240, 241);
+  max-height: 100%;
+}
+/* Guest/  or username after login */
+.navbar-span {
+  flex: 1;
+  margin: 0 0% 0 20%;
+  font-size: larger;
+  color: white;
+}
+
+.login-logout-icon-button-container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3%;
+}
+
+.login-logout-icon-button-container:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+/* login and log out button itself   */
+.login-logout-button {
+  border: none;
+  background: none;
+}
+
+/* login and log out button itself (hover) style  */
+.login-logout-button:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login-icon {
+  background-color: transparent;
+}
+
+.logout-icon {
+  background-color: transparent;
+}
+/* postion abosolute to the container of .navbar-container */
+.form-show {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  width: 25%;
+  height: fit-content;
+}
+/* login/signUp form when shown and all the content it have */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(247, 247, 237);
+  padding: 3%;
+  border: 1px black;
+  border-style: solid;
+  border-radius: 3%;
+  padding-bottom: 10%;
+}
+
+.tab-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 2%;
+  justify-content: center;
+}
+
+.form-hidden {
+  display: none;
+}
+
+.tab-hidden {
+  display: none;
+}
+
+.formTab-highlight {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.formTabs {
+  background: none;
+  margin-left: 4%;
+  margin-right: 4%;
+}
+/*  positioning the hide form button absolute to the .form-container   */
+.hide-form-btn {
+  position: absolute;
+  right: 0%;
+}

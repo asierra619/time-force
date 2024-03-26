@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 import { LOGIN_USER } from "../../utils/mutations";
-
+import "./LoginForm.css"
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
@@ -38,25 +38,27 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
-      <span>Login Form</span>
-      <form onSubmit={handleFormSubmit}>
-        <input
+    <div className="login-form-container">
+      <span className="login-form-span">Login Form</span>
+      <form className="login-form-content" onSubmit={handleFormSubmit}>
+        <span><strong>Email</strong>:</span>
+        <input className="form-input"
           value={userFormData.email}
           name="email"
           onChange={handleFormChange}
           type="email"
-          placeholder="email"
+          placeholder="your email"
         />
-        <input
+        <span><strong>Password</strong>:</span>
+        <input className="form-input"
           value={userFormData.password}
           name="password"
           onChange={handleFormChange}
           type="text"
-          placeholder="password"
+          placeholder="your password"
         />
       </form>
-      <button onClick={handleFormSubmit}>Submit</button>
+      <button className="form-submit-btn" onClick={handleFormSubmit}>Submit</button>
     </div>
   );
 };

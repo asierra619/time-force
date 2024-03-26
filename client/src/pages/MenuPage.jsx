@@ -12,7 +12,7 @@ import SideMenu from "../components/sideMenu/sideMenu.jsx";
 import SideCart from "../components/sideCart/SideCart.jsx";
 
 export default function MenuPage() {
-  /*
+  /* //testing data
   const { loading, data } = useQuery(QUERY_ALL_FOOD);
   const allFood = data?.allFood || {};
   console.log(allFood);
@@ -54,8 +54,8 @@ export default function MenuPage() {
   }
 
   return (
+    <>
     <div>
-      <SideMenu />
       <div>
         <div id={"pizza"}>Pizza</div>
         {allPizza.length ? (
@@ -64,7 +64,7 @@ export default function MenuPage() {
               <div key={item.foodName} className="foodCard-container">
                 <div>{item.foodName}</div>
                 <img src={item.image} alt={item.description} />
-                <div>{`price: ${item.price}$`}</div>
+                <div>{`price: $${item.price}`}</div>
                 {Auth.loggedIn() ? (
                   <button onClick={() =>handleSaveToCart({foodName: item.foodName,price: item.price,})}>
                     Add to Cart
@@ -83,7 +83,7 @@ export default function MenuPage() {
               <div key={item.foodName} className="foodCard-container">
                 <div>{item.foodName}</div>
                 <img src={item.image} alt={item.description} />
-                <div>{`price: ${item.price}$`}</div>
+                <div>{`price: $${item.price}`}</div>
                 {Auth.loggedIn() ? (
                   <button onClick={() =>handleSaveToCart({foodName: item.foodName,price: item.price,})}>
                     Add to Cart
@@ -102,7 +102,7 @@ export default function MenuPage() {
               <div key={item.foodName} className="foodCard-container">
                 <div>{item.foodName}</div>
                 <img src={item.image} alt={item.description} />
-                <div>{`price: ${item.price}$`}</div>
+                <div>{`price: $${item.price}`}</div>
                 {Auth.loggedIn() ? (
                   <button onClick={() =>handleSaveToCart({foodName: item.foodName,price: item.price,})}>
                     Add to Cart
@@ -116,7 +116,10 @@ export default function MenuPage() {
         )}
       </div>
 
-      { <SideCart/> }
+      
     </div>
+    <SideCart/>
+    <SideMenu />
+    </>
   );
 }

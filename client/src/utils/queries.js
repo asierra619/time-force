@@ -8,6 +8,7 @@ query me {
     lastName
     email
     cart {
+      _id
       foodName
       price
     }

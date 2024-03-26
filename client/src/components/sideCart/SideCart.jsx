@@ -6,9 +6,9 @@ import { DELETE_FROM_CART } from "../../utils/mutations";
 export default function SideCart() {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
-  console.log("userData: ", userData);
+ // console.log("userData: ", userData);
   const userCart = userData?.cart || {};
-  console.log("userCart: ", userCart);
+ // console.log("userCart: ", userCart);
 
   let paymentDetails ={};
   if (userCart && userCart.length > 0 ) {
@@ -20,9 +20,10 @@ export default function SideCart() {
     const tax = (subtotal * 0.105).toFixed(2);
     const total = (subtotal + tax).toFixed(2);
     paymentDetails = {subtotal:subtotal, tax:tax, total:total};
+    console.log("payment details: ",paymentDetails);
     return paymentDetails;
   }
-  console.log(paymentDetails);
+  
 
   const [delelteCartItem, { error }] = useMutation(DELETE_FROM_CART, {
     refetchQueries: [QUERY_ME, "me"],
@@ -30,12 +31,12 @@ export default function SideCart() {
 
   const handleOrderSubmit = (event) => {
     event.preventDefault();
-    //Todo: add queries to combine with the stripe and jump to payment page
+    //Todo: add reducer queries to combine with the stripe and jump to payment page
   };
-
-  const handleDeleteCartItem = async (event, foodName) => {
-    event.preventDefault();
-    // does not require user to log in
+    //Todo: add reducer queriss to handle this function
+  const handleDeleteCartItem = async (foodName) => {
+    //event.preventDefault();
+    
     try {
       console.log("handleDel3teCartItem: (foodName) ", foodName);
       const { data } = await delelteCartItem({ variables: foodName });

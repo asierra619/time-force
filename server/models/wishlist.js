@@ -1,12 +1,12 @@
 const { Schema, model } = require('mongoose');
 
 const wishlistSchema = new Schema({
-  food: [
+  food: 
     {
       type: Schema.Types.ObjectId,
       ref: 'Food'
     }
-  ]
+  
 });
 
 //const Wishlist = model('wishlist', wishlistSchema);

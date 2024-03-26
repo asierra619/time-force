@@ -123,21 +123,23 @@ const resolvers = {
       return { token, user };
     },
 
-    saveToCart: async (parent, { foodName }, context) => {
+    saveToCart: async (parent, { foodName, price }, context) => {
+      console.log("hitting resolver saveToCart: (context.user) ", context.user)
+      console.log("hitting resolver saveToCart: ({foodName}) ", foodName)
       if (context.user) {
-        const food = await food.findOne({ foodName: foodName });
+        const food = await Food.findOne({ foodName: foodName });
         if (!food) {
           return console.log(
             "no food with this foodName is found in database!"
           );
         }
-
+        console.log("food: ",food)
         const addToCart = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { cart: { _id: food._id } } },
+          { $addToSet: { cart: { food:foodName, price:price }  } },
           { new: true }
         );
-
+        console.log("newUser cart ",addToCart)
         return addToCart;
       } else {
         throw AuthenticationError;

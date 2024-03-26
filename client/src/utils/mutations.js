@@ -1,8 +1,18 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const CREATE_USER = gql`
-mutation createUser($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
-    createUser(firstName: $firstName, lastName: $lastName ,email: $email, password: $password) {
+  mutation createUser(
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $password: String!
+  ) {
+    createUser(
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+    ) {
       token
       user {
         _id
@@ -14,7 +24,7 @@ mutation createUser($firstName: String!, $lastName: String!, $email: String!, $p
 `;
 
 export const LOGIN_USER = gql`
-mutation login($email: String!, $password: String!) {
+  mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
       user {
@@ -28,53 +38,55 @@ mutation login($email: String!, $password: String!) {
 `;
 
 export const SAVE_TO_CART = gql`
-mutation saveToCart($foodName: String!, $price: float!) {
+  mutation saveToCart($foodName: String!, $price: Float!) {
     saveToCart(foodName: $foodName, price: $price) {
       _id
       firstName
       lastName
       cart {
+        _id
         food
+        price
       }
     }
-}
+  }
 `;
 
 export const DELETE_FROM_CART = gql`
-mutation deleteFromCart($foodName: String!) {
+  mutation deleteFromCart($foodName: String!) {
     deleteFromCart(foodName: $foodName) {
+      _id
+      firstName
+      lastName
+      cart {
         _id
-        firstName
-        lastName
-        cart {
-          food
-        }
+      }
     }
-}
+  }
 `;
 
 export const SAVE_TO_WISHLIST = gql`
-mutation saveToWishlish($foodName: String!) {
+  mutation saveToWishlish($foodName: String!) {
     saveToWishlish(foodName: $foodName) {
-        _id
-        firstName
-        lastName
-        wishlist {
-            food
-        }
+      _id
+      firstName
+      lastName
+      wishlist {
+        food
+      }
     }
-}
+  }
 `;
 
 export const DELETE_FROM_WISHLIST = gql`
-mutation saveToWishlish($foodName: String!) {
+  mutation saveToWishlish($foodName: String!) {
     saveToWishlish(foodName: $foodName) {
-        _id
-        firstName
-        lastName
-        wishlist {
-            food
-        }
+      _id
+      firstName
+      lastName
+      wishlist {
+        food
+      }
     }
-}
-`
+  }
+`;

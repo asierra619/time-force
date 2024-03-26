@@ -4,7 +4,6 @@ import { gql } from '@apollo/client';
 export const QUERY_ME = gql`
 query me {
   me {
-    _id
     firstName
     lastName
     email
@@ -19,7 +18,6 @@ query me {
 export const QUERY_ALL_USERS =gql`
 query allUsers {
   allUsers {
-    _id
     firstName
     lastName
     email

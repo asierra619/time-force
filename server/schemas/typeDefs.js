@@ -55,7 +55,7 @@ type Mutation {
     login(email: String!, password: String!): Auth
     saveToCart(foodName: String!, price: Float!): User
     deleteFromCart(foodName: String!): User
-    saveToWishlist(foodName: String!): User #added ID to debug - change as needed
+    saveToWishlist(foodName: String!): User 
     deleteFromWishlist(foodName: String!): User
 }
 `;

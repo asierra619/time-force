@@ -148,6 +148,7 @@ const resolvers = {
     },
 
     deleteFromCart: async (parent, { foodName }, context) => {
+      console.log("hitting resolver deleteFromCart: {foodName}", foodName)
       if (context.user) {
         const deleteItem = await User.findOneAndUpdate(
           { _id: context.user._id },

@@ -2,32 +2,30 @@ import "./SideCart.css";
 import { QUERY_ME } from "../../utils/queries";
 import { useQuery, useMutation } from "@apollo/client";
 import { DELETE_FROM_CART } from "../../utils/mutations";
-
+import Auth from "../../utils/auth";
 
 export default function SideCart() {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
- // console.log("userData: ", userData);
+  // console.log("userData: ", userData);
   const userCart = userData?.cart || {};
   console.log("userCart: ", userCart);
-  
-  let paymentDetails =[];
-  if (userCart.length > 0 ) {
-    console.log("userCart length:", userCart.length)
-    console.log("starting for loop")
+
+  let paymentDetails = [];
+  if (userCart.length > 0) {
+    console.log("userCart length:", userCart.length);
+    console.log("starting for loop");
     let subtotal = 0;
     for (let i; i < userCart.length; i++) {
-        console("useCart[i].price: ", userCart[i].price)
+      console("useCart[i].price: ", userCart[i].price);
       subtotal += userCart[i].price;
     }
     subtotal.toFixed(2);
     const tax = (subtotal * 0.105).toFixed(2);
-    const total = parseFloat((subtotal + tax)).toFixed(2);
-    const paymentDetails = [subtotal, tax, total];
-    console.log("payment details: ",paymentDetails);
-    
+    const total = parseFloat(subtotal + tax).toFixed(2);
+    paymentDetails = [subtotal, tax, total];
+    console.log("payment details: ", paymentDetails);
   }
-  
 
   const [delelteCartItem, { error }] = useMutation(DELETE_FROM_CART, {
     refetchQueries: [QUERY_ME, "me"],
@@ -37,13 +35,13 @@ export default function SideCart() {
     event.preventDefault();
     //Todo: add reducer queries to combine with the stripe and jump to payment page
   };
-    //Todo: add reducer queriss to handle this function
+
+  //Todo: add reducer queriss to handle this function
   const handleDeleteCartItem = async (foodName) => {
     //event.preventDefault();
-    
     try {
-      console.log("handleDel3teCartItem: (foodName) ", foodName);
-      const { data } = await delelteCartItem({ variables: foodName });
+      console.log("handleDeleteCartItem: (foodName) ", foodName);
+      const { data } = await delelteCartItem({ variables: {foodName} });
     } catch (error) {
       console.log("something went wrong!");
       console.log(error);
@@ -84,11 +82,11 @@ export default function SideCart() {
     <div className="sideCart-container">
       {userCart !== undefined && userCart.length > 0 ? (
         <>
-          <span>{userCart !== undefined && userCart.length > 1 ? "Order" : "Orders"}</span>
+          {userCart.length > 1 ? <span>Orders</span> : <span>Order</span>}
           <div className="populatedCart-container">
-            {userCart.map((items) => {
+            {userCart.map((items, index) => {
               return (
-                <div key={items._id} className="cartItems">
+                <div key={index} className="cartItems">
                   <div>{items.foodName}</div>
                   <div>{items.price}</div>
                   <button onClick={() => handleDeleteCartItem(items.foodName)}>
@@ -109,9 +107,13 @@ export default function SideCart() {
             src="../../../assets/images/shoppingBag.png"
             alt={"shopping bag"}
           />
-          <span className="emptyCart-span">
-            Let's begin with adding orders from the menu to your cart!
-          </span>
+          {Auth.loggedIn() ? (
+            <span>
+              Let's begin with adding orders from the menu to your cart!
+            </span>
+          ) : (
+            <span>Login In first to see your cart </span>
+          )}
         </div>
       )}
     </div>

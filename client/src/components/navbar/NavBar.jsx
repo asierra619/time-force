@@ -27,7 +27,7 @@ export default function NavBar() {
   }
 
   return (
-    <>
+    <div className="navbar-container">
       <div id={"top"}>Project Title</div>
       {Auth.loggedIn() ? (
         <>
@@ -63,7 +63,7 @@ export default function NavBar() {
           <button onClick={() => setShowForm(false)}>x</button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

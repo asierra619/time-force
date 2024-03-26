@@ -44,8 +44,7 @@ export const SAVE_TO_CART = gql`
       firstName
       lastName
       cart {
-        _id
-        food
+        foodName
         price
       }
     }
@@ -59,12 +58,14 @@ export const DELETE_FROM_CART = gql`
       firstName
       lastName
       cart {
-        _id
+        foodName
+        price
       }
     }
   }
 `;
 
+/*
 export const SAVE_TO_WISHLIST = gql`
   mutation saveToWishlish($foodName: String!) {
     saveToWishlish(foodName: $foodName) {
@@ -72,7 +73,8 @@ export const SAVE_TO_WISHLIST = gql`
       firstName
       lastName
       wishlist {
-        food
+        foodName
+        price
       }
     }
   }
@@ -85,8 +87,10 @@ export const DELETE_FROM_WISHLIST = gql`
       firstName
       lastName
       wishlist {
-        food
+        foodName
+        price
       }
     }
   }
 `;
+*/

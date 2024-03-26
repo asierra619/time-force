@@ -5,7 +5,7 @@ const resolvers = {
   Query: {
     // cart and wish schema are sub-docs adhere to user model/ don't need to populate
     me: async (parent, args, context) => {
-      console.log("resolver: ME (context.user)", context.user);
+     // console.log("resolver: ME (context.user)", context.user);
       if (context.user) {
         try {
           const userData = await User.findOne({ _id: context.user._id });
@@ -53,10 +53,10 @@ const resolvers = {
       console.log("resolver: query all Pizza");
       try {
         const category = await Category.findOne({categoryName:"pizza"})
-        console.log("Category", category)
-        console.log("Category._id", category._id)
+       // console.log("Category", category)
+       // console.log("Category._id", category._id)
         const food = await Food.find({category: category._id}).populate("category");
-        console.log("data return in resolver: ",food)
+       // console.log("data return in resolver: ",food)
         return food;
       } catch (error) {
         console.log(error);
@@ -124,6 +124,7 @@ const resolvers = {
     },
 
     saveToCart: async (parent, { foodName, price }, context) => {
+    
       console.log("hitting resolver saveToCart: (context.user) ", context.user)
       console.log("hitting resolver saveToCart: ({foodName}) ", foodName)
       if (context.user) {
@@ -136,7 +137,7 @@ const resolvers = {
         console.log("food: ",food)
         const addToCart = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { cart: { food:foodName, price:price }  } },
+          { $addToSet: { cart: { foodName:foodName, price:price }  } },
           { new: true }
         );
         console.log("newUser cart ",addToCart)
@@ -147,6 +148,7 @@ const resolvers = {
     },
 
     deleteFromCart: async (parent, { foodName }, context) => {
+      console.log("hitting resolver deleteFromCart: {foodName}", foodName)
       if (context.user) {
         const deleteItem = await User.findOneAndUpdate(
           { _id: context.user._id },

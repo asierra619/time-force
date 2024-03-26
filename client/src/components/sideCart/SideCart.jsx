@@ -7,11 +7,11 @@ export default function SideCart() {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
   console.log("userData: ", userData);
-  const userCart = userData.cart;
+  const userCart = userData?.cart || {};
   console.log("userCart: ", userCart);
 
   let paymentDetails ={};
-  if (userCart.length > 0) {
+  if (userCart && userCart.length > 0 ) {
     let subtotal = 0;
     for (let i; i < userCart.length; i++) {
       subtotal = subtotal + userCart[i].price;
@@ -23,7 +23,7 @@ export default function SideCart() {
     return paymentDetails;
   }
   console.log(paymentDetails);
-  
+
   const [delelteCartItem, { error }] = useMutation(DELETE_FROM_CART, {
     refetchQueries: [QUERY_ME, "me"],
   });
@@ -77,9 +77,9 @@ export default function SideCart() {
 
   return (
     <div className="sideCart-container">
-      {userData.cart.length > 0 ? (
+      {userData !== undefined && userData.cart.length > 0 ? (
         <>
-          <span>{userData.cart.length > 1 ? "Order" : "Orders"}</span>
+          <span>{userData !== undefined && userData.cart.length > 1 ? "Order" : "Orders"}</span>
           <div className="populatedCart-container">
             {userCart.map((items) => {
               return (

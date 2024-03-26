@@ -9,7 +9,7 @@ import {
 } from "../utils/queries";
 import { SAVE_TO_CART, DELETE_FROM_CART } from "../utils/mutations";
 import SideMenu from "../components/sideMenu/sideMenu.jsx";
-import SideCart from '../components/sideCart/SideCart.jsx'
+import SideCart from "../components/sideCart/SideCart.jsx";
 
 export default function MenuPage() {
   /*
@@ -35,10 +35,11 @@ export default function MenuPage() {
     useQuery(QUERY_ALL_BEVERAGE);
   const allBeverage = dataBeverage?.allBeverage || {};
   console.log("allBeverage", allBeverage);
-  // Todo: accept price as a argument and send to DB
-  const handleSaveToCart = async (event, {foodName, price}) => {
-    event.preventDefault();
 
+  // Todo: accept price as a argument and send to DB
+  const handleSaveToCart = async ({ foodName, price }) => {
+    event.preventDefault();
+    console.log({ foodName, price });
     try {
       const { data } = saveToCart({
         variables: { foodName, price },
@@ -64,7 +65,14 @@ export default function MenuPage() {
                 <div>{item.foodName}</div>
                 <img src={item.image} alt={item.description} />
                 <div>{`price: ${item.price}$`}</div>
-                <button onClick={() => handleSaveToCart(item.foodName)}>
+                <button
+                  onClick={() =>
+                    handleSaveToCart({
+                      foodName: item.foodName,
+                      price: item.price,
+                    })
+                  }
+                >
                   Add to Cart
                 </button>
               </div>
@@ -82,7 +90,12 @@ export default function MenuPage() {
                 <img src={item.image} alt={item.description} />
                 <div>{`price: ${item.price}$`}</div>
                 <button
-                  onClick={() => handleSaveToCart({foodName:item.foodName, price:item.price})}
+                  onClick={() =>
+                    handleSaveToCart({
+                      foodName: item.foodName,
+                      price: item.price,
+                    })
+                  }
                 >
                   Add to Cart
                 </button>
@@ -90,7 +103,7 @@ export default function MenuPage() {
             );
           })
         ) : (
-          <div>Sorry, No Pizza is in Stock!</div>
+          <div>Sorry, No Side Order is in Stock!</div>
         )}
         <div id={"beverage"}>Beverage</div>
         {allBeverage.length ? (
@@ -100,18 +113,20 @@ export default function MenuPage() {
                 <div>{item.foodName}</div>
                 <img src={item.image} alt={item.description} />
                 <div>{`price: ${item.price}$`}</div>
-                <button onClick={() => handleSaveToCart(item.foodName)}>
-                  Add to Cart
-                </button>
+                {Auth.loggedIn() ? (
+                  <button onClick={() =>handleSaveToCart({foodName: item.foodName,price: item.price,})}>
+                    Add to Cart
+                  </button>
+                ) : (<div></div>)}
               </div>
             );
           })
         ) : (
-          <div>Sorry, No Pizza is in Stock!</div>
+          <div>Sorry, No Beverage is in Stock!</div>
         )}
       </div>
 
-      <SideCart/>
+      {/* <SideCart/> */}
     </div>
   );
 }

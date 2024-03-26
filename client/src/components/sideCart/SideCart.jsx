@@ -4,6 +4,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { DELETE_FROM_CART } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
+
 export default function SideCart() {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
@@ -39,11 +40,11 @@ export default function SideCart() {
   };
 
   //Todo: add reducer queriss to handle this function
-  const handleDeleteCartItem = async (foodName) => {
+  const handleDeleteCartItem = async (_id) => {
     //event.preventDefault();
     try {
-      console.log("handleDeleteCartItem: (foodName) ", foodName);
-      const { data } = await delelteCartItem({ variables: {foodName} });
+      console.log("handleDeleteCartItem: (foodName) ", _id);
+      const { data } = await delelteCartItem({ variables: {_id} });
     } catch (error) {
       console.log("something went wrong!");
       console.log(error);
@@ -91,16 +92,16 @@ export default function SideCart() {
                 <div key={index} className="cartItems">
                   <div>{items.foodName}</div>
                   <div>{items.price}</div>
-                  <button onClick={() => handleDeleteCartItem(items.foodName)}>
+                  <button onClick={() => handleDeleteCartItem(items._id)}>
                     delete from cart icon
                   </button>
                 </div>
               );
             })}
           </div>
-          <span>{`SubTotal: ${paymentDetails[0]}$`}</span>
-          <span>{`Tax: ${paymentDetails[1]}$`}</span>
-          <span>{`Total: ${paymentDetails[2]}$`}</span>
+          <span>{`SubTotal: $${paymentDetails[0]}`}</span>
+          <span>{`Tax: $${paymentDetails[1]}`}</span>
+          <span>{`Total: $${paymentDetails[2]}`}</span>
           <button onClick={() => handleOrderSubmit()}>Confirm Order</button>
         </>
       ) : (

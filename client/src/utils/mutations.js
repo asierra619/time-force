@@ -52,12 +52,13 @@ export const SAVE_TO_CART = gql`
 `;
 
 export const DELETE_FROM_CART = gql`
-  mutation deleteFromCart($foodName: String!) {
-    deleteFromCart(foodName: $foodName) {
+  mutation deleteFromCart($_id: ID!) {
+    deleteFromCart(_id: $_id) {
       _id
       firstName
       lastName
       cart {
+        _id
         foodName
         price
       }

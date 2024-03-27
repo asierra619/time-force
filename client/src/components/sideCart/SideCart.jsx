@@ -4,8 +4,6 @@ import { useQuery, useMutation } from "@apollo/client";
 import { DELETE_FROM_CART } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
-
-
 export default function SideCart() {
   const { loading, data } = useQuery(QUERY_ME);
   const userData = data?.me || {};
@@ -35,8 +33,9 @@ export default function SideCart() {
     refetchQueries: [QUERY_ME, "me"],
   });
 
-  const handleOrderSubmit = (event) => {
-    event.preventDefault();
+  const handleOrderSubmit = () => {
+    
+    window.alert("Order Submitted!");
     //Todo: add reducer queries to combine with the stripe and jump to payment page
   };
 
@@ -86,37 +85,39 @@ export default function SideCart() {
     <div className="sideCart-container">
       {userCart !== undefined && userCart.length > 0 ? (
         <>
-          {userCart.length > 1 ? <span>Orders</span> : <span>Order</span>}
+          {userCart.length > 1 ? <span className="sideCart-order-span">Orders</span> : <span className="sideCart-order-span">Order</span>}
           <div className="populatedCart-container">
             {userCart.map((items, index) => {
               return (
                 <div key={index} className="cartItems">
-                  <div>{items.foodName}</div>
-                  <div>{items.price}</div>
-                  <button onClick={() => handleDeleteCartItem(items._id)}>
-                    delete from cart icon
+                  <div className="cartItems-foodName">{items.foodName}</div>
+                  <div className="cartItems-price">{`$${items.price}`}</div>
+                  <button className="cartItems-delete-btn"  onClick={() => handleDeleteCartItem(items._id)}>
+                    delete from cart
                   </button>
                 </div>
               );
             })}
           </div>
-          <span>{`SubTotal: $${paymentDetails[0]}`}</span>
-          <span>{`Tax: $${paymentDetails[1]}`}</span>
-          <span>{`Total: $${paymentDetails[2]}`}</span>
-          <button onClick={() => handleOrderSubmit()}>Confirm Order</button>
+          <div className="paymentDetails-container">
+          <span className="paymentDetails-span">{`SubTotal: $${paymentDetails[0]}`}</span>
+          <span className="paymentDetails-span">{`Tax: $${paymentDetails[1]}`}</span>
+          <span className="paymentDetails-span">{`Total: $${paymentDetails[2]}`}</span>
+          <button className="paymentDetails-submit-btn" onClick={() => handleOrderSubmit()}>Confirm Order</button>
+          </div>
         </>
       ) : (
         <div className="emptyCart-container">
-          <img
+          <img className="emptyCart-shopping-bag-icon"
             src="https://i.fbcd.co/products/original/667ca7502e4e218f01e4fbb26e01e2fc7fe17370f64bf444f60818b9d1b2c2b2.jpg"
             alt={"shopping bag"}
           />
           {Auth.loggedIn() ? (
-            <span>
+            <span className="afterLogin-empty-cart-span">
               Let's begin with adding orders from the menu to your cart!
             </span>
           ) : (
-            <span>Login In first to see your cart </span>
+            <span className="beforeLogin-cart-span">Login In first to see your cart </span>
           )}
         </div>
       )}

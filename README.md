@@ -51,14 +51,20 @@ SO THAT they have easy reordering as well as being being able to keep track of t
 
 ## Installation
 
-Clone the repo from GitHub and open the intergrated terminal once installed. Then, enter `npm i` to make sure all dependencies are installed. 
-
 GitHub Repo - https://github.com/asierra619/time-force
+
+Clone the repo<br />
+Run the following commands in the integrated terminal -<br />
+- `npm run install`<br />
+- `npm run seed`<br />
+- `npm run develop`<br /> 
 
 ## Usage
 
 Check out our Website!<br />
 https://time-force-pizza.onrender.com
+
+Check out the [Installation](#installation) tab if you'd like to run the site locally.
 
 ![screenshot of Time Force Pizzeria](./client/public/time-force-pizza-screenshot.png)
 
@@ -72,10 +78,10 @@ MIT
 
 ## Credits
 
-Tabitha Buder<br />
-Ulises Duran<br />
-Yilun Fan<br />
-Alex Sierra<br />
+Tabitha Buder - https://github.com/MarshPupp<br />
+Ulises Duran - https://github.com/ulisesd15<br />
+Yilun Fan - https://github.com/ylf456<br />
+Alex Sierra - https://github.com/asierra619<br />
 
 Thank you to the following -<br />
 Michael Pacheco<br />

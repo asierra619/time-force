@@ -9,7 +9,7 @@ const formatted_date = function () {
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();
   const formatted_date = `${MDDYYYY} ${hours}:${minutes}:${seconds}`;
-  console.log(formatted_date);
+ // console.log(formatted_date);
   return formatted_date;
 };
 

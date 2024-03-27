@@ -12,7 +12,7 @@ db.once('open', async () => {
     await cleanDB('Food','foods')
 
     const user = await User.create(userSeeds);
-    console.log(user)
+    //console.log(user)
     await Category.create(categorySeeds);
    // await Food.create(foodSeeds);
 

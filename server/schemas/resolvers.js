@@ -9,7 +9,7 @@ const resolvers = {
       if (context.user) {
         try {
           const userData = await User.findOne({ _id: context.user._id });
-          console.log(userData);
+       //   console.log(userData);
           return userData;
         } catch (err) {
           console.log(err);
@@ -19,10 +19,10 @@ const resolvers = {
       }
     },
     allUsers: async (parent, args) => {
-      console.log("resolver: query all users");
+    //  console.log("resolver: query all users");
       try {
         const users = await User.find().populate("cart");
-        console.log(users);
+      //  console.log(users);
         return users;
       } catch (error) {
         console.log(error);
@@ -30,7 +30,7 @@ const resolvers = {
       }
     },
     allCategory: async (parent, args) => {
-      console.log("resolver: query all categories");
+    //  console.log("resolver: query all categories");
       try {
         const categories = await Category.find({});
         return categories;
@@ -40,7 +40,7 @@ const resolvers = {
       }
     },
     allFood: async (parent, args) => {
-      console.log("resolver: query all food");
+     // console.log("resolver: query all food");
       try {
         const food = await Food.find().populate("category");
         return food;
@@ -50,7 +50,7 @@ const resolvers = {
       }
     },
     allPizza: async (parent, args) => {
-      console.log("resolver: query all Pizza");
+     // console.log("resolver: query all Pizza");
       try {
         const category = await Category.findOne({categoryName:"pizza"})
        // console.log("Category", category)
@@ -64,7 +64,7 @@ const resolvers = {
       }
     },
     allSideOrder: async (parent, args) => {
-      console.log("resolver: query all Side orders");
+     // console.log("resolver: query all Side orders");
       try {
         const category = await Category.findOne({categoryName:"side orders"})
         const food = await Food.find({category:category._id}).populate("category");
@@ -75,7 +75,7 @@ const resolvers = {
       }
     },
     allBeverage: async (parent, args) => {
-      console.log("resolver: query all beverages");
+    // console.log("resolver: query all beverages");
       try {
         const category = await Category.findOne({categoryName:"beverage"})
         const food = await Food.find({category:category._id}).populate("category");
@@ -89,12 +89,14 @@ const resolvers = {
   Mutation: {
     // change username to firstName and lastName
     createUser: async (parent, { firstName, lastName, email, password }) => {
+      /*
       console.log("resolver:createUser", {
         firstName,
         lastName,
         email,
         password,
       });
+      */
       const newUser = await User.create({
         firstName,
         lastName,
@@ -106,8 +108,8 @@ const resolvers = {
     },
 
     login: async (parent, { email, password }) => {
-      console.log("resolver: login");
-      console.log({ email, password });
+    //  console.log("resolver: login");
+    //  console.log({ email, password });
 
       const user = await User.findOne({ email });
       if (!user) {
@@ -125,8 +127,8 @@ const resolvers = {
 
     saveToCart: async (parent, { foodName, price }, context) => {
     
-      console.log("hitting resolver saveToCart: (context.user) ", context.user)
-      console.log("hitting resolver saveToCart: ({foodName}) ", foodName)
+    //  console.log("hitting resolver saveToCart: (context.user) ", context.user)
+     // console.log("hitting resolver saveToCart: ({foodName}) ", foodName)
       if (context.user) {
         const food = await Food.findOne({ foodName: foodName });
         if (!food) {
@@ -134,13 +136,13 @@ const resolvers = {
             "no food with this foodName is found in database!"
           );
         }
-        console.log("food: ",food)
+       // console.log("food: ",food)
         const addToCart = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { cart: { foodName:foodName, price:price }  } },
           { new: true }
         );
-        console.log("newUser cart ",addToCart)
+       // console.log("newUser cart ",addToCart)
         return addToCart;
       } else {
         throw AuthenticationError;
@@ -148,7 +150,7 @@ const resolvers = {
     },
 
     deleteFromCart: async (parent, { _id }, context) => {
-      console.log("hitting resolver deleteFromCart: {_id}", _id)
+    //  console.log("hitting resolver deleteFromCart: {_id}", _id)
       if (context.user) {
         const deleteItem = await User.findOneAndUpdate(
           { _id: context.user._id },

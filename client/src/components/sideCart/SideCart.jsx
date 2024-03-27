@@ -14,11 +14,11 @@ export default function SideCart() {
   let paymentDetails = [];
 
   if (userCart.length > 0) {
-   console.log("userCart length:", userCart.length);
-   console.log("starting for loop");
+   //console.log("userCart length:", userCart.length);
+  // console.log("starting for loop");
     let subtotal = 0;
     for (let i = 0; i < userCart.length; i++) {
-      console.log("useCart[i].price: ", userCart[i].price);
+     // console.log("useCart[i].price: ", userCart[i].price);
       subtotal += userCart[i].price;
     }
     subtotal = parseFloat(subtotal.toFixed(2));
@@ -26,7 +26,7 @@ export default function SideCart() {
     const total = parseFloat((subtotal + tax).toFixed(2));
   
     paymentDetails = [subtotal, tax, total];
-    console.log("payment details: ", paymentDetails);
+  //  console.log("payment details: ", paymentDetails);
   }
 
   const [delelteCartItem, { error }] = useMutation(DELETE_FROM_CART, {
@@ -43,7 +43,7 @@ export default function SideCart() {
   const handleDeleteCartItem = async (_id) => {
     //event.preventDefault();
     try {
-      console.log("handleDeleteCartItem: (foodName) ", _id);
+    //  console.log("handleDeleteCartItem: (foodName) ", _id);
       const { data } = await delelteCartItem({ variables: {_id} });
     } catch (error) {
       console.log("something went wrong!");

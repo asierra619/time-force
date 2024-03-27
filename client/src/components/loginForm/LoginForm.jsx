@@ -16,13 +16,13 @@ const LoginForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log("userFormData", userFormData);
+      // console.log("userFormData", userFormData);
 
       const { data } = await login({
         variables: { ...userFormData },
       });
 
-      console.log("login mutation data return: ", data);
+    //  console.log("login mutation data return: ", data);
       Auth.login(data.login.token);
 
       setUserFormData({

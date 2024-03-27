@@ -6,7 +6,7 @@ import Auth from "../../utils/auth";
 import "./index.css";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from '../../utils/queries';
-
+//c
 
 export default function NavBar() {
   const [showForm, setShowForm] = useState(false);
@@ -30,7 +30,7 @@ export default function NavBar() {
   return (
     <>
     <div className="navbar-container">
-      <div id={"top"} className="title">Time Force Pizzaria</div>
+      <div id={"top"} className="title">Time Force Pizzeria</div>
       {Auth.loggedIn() ? (
       <>
         <span className="navbar-span">{`${'Welcome back! ' + userData.firstName + ' '+ userData.lastName}`}</span>

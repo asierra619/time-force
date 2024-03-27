@@ -34,7 +34,7 @@ function App() {
   return (
     <>
     <ApolloProvider client={client}>
-      <img className='pizzaria-background' src="./pizza-background.jpg" img="pizzaria background"></img>
+      <div className='pizzaria-background'></div>
       <Navbar />
       <Outlet />
       </ApolloProvider>

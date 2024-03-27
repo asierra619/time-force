@@ -6,7 +6,7 @@ import Auth from "../../utils/auth";
 import "./index.css";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from '../../utils/queries';
-
+//c
 
 export default function NavBar() {
   const [showForm, setShowForm] = useState(false);

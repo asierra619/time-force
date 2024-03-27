@@ -15,7 +15,7 @@ export default function NavBar() {
   const { loading, data } = useQuery(QUERY_ME);
 
   const userData = data?.me || {}
-  console.log("userData", userData)
+ // console.log("userData", userData)
 
   const toggleForm = () => {
     if(showForm === false){

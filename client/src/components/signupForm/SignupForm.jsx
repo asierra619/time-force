@@ -23,12 +23,12 @@ const SignupForm = () => {
     event.preventDefault();
 
     try {
-      console.log("userFromData", userFormData);
+     // console.log("userFromData", userFormData);
       const { data } = await createUser({
         variables: { ...userFormData },
       });
 
-      console.log("SignUp mutation return data: ", data);
+    //  console.log("SignUp mutation return data: ", data);
       Auth.login(data.createUser.token);
 
       setUserFormData({

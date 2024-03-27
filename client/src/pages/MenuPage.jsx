@@ -40,7 +40,7 @@ export default function MenuPage() {
   // Todo: accept price as a argument and send to DB
   const handleSaveToCart = async ({ foodName, price }) => {
     
-    console.log("handleSavetoCart: ",{ foodName, price });
+   // console.log("handleSavetoCart: ",{ foodName, price });
     try {
       const { data } = saveToCart({
         variables: { foodName, price },

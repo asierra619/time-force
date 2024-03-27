@@ -9,6 +9,7 @@
   z-index: 1000; /* Adjust the z-index as needed : Elements with a higher z-index value are stacked above elements with lower z-index values*/
   background-color: #da6837; /* Set your desired background color */
   border-radius: 2%;
+  z-index: 2;
 }
 
 .title {
@@ -20,6 +21,7 @@
   font-family: "Courier New", Courier, monospace;
   color: rgb(238, 240, 241);
   max-height: 100%;
+  z-index: 2;
 }
 /* Guest/  or username after login */
 .navbar-span {
@@ -35,6 +37,7 @@
   justify-content: center;
   align-items: center;
   margin-right: 3%;
+  z-index: 2;
 }
 
 .login-logout-icon-button-container:hover {
@@ -62,11 +65,12 @@
 }
 /* postion abosolute to the container of .navbar-container */
 .form-show {
-  position: absolute;
+  position: fixed;
   top: 15%;
   right: 10%;
   width: 25%;
   height: fit-content;
+  z-index: 2;
 }
 /* login/signUp form when shown and all the content it have */
 .form-container {
@@ -80,6 +84,7 @@
   border-style: solid;
   border-radius: 3%;
   padding-bottom: 10%;
+  z-index: 2;
 }
 
 .tab-container {

@@ -10,6 +10,7 @@ import {
 import { SAVE_TO_CART, DELETE_FROM_CART } from "../utils/mutations";
 import SideMenu from "../components/sideMenu/sideMenu.jsx";
 import SideCart from "../components/sideCart/SideCart.jsx";
+import "./menuPage.css"
 
 export default function MenuPage() {
   /* //testing data
@@ -56,14 +57,14 @@ export default function MenuPage() {
   return (
     <>
     <div>
-      <div>
-        <div id={"pizza"}>Pizza</div>
+      <div  className="foodCard-container">
+        <div className="menu-section" id={"pizza"}>Pizza</div>
         {allPizza.length ? (
           allPizza.map((item) => {
             return (
-              <div key={item.foodName} className="foodCard-container">
-                <div>{item.foodName}</div>
-                <img src={item.image} alt={item.description} />
+              <div className="foodCard-card" key={item.foodName} >         
+                <img className="foodCard-image" src={item.image} alt={item.description} />
+                <div className="foodCard-foodName">{item.foodName}</div>
                 <div>{`price: $${item.price}`}</div>
                 {Auth.loggedIn() ? (
                   <button onClick={() =>handleSaveToCart({foodName: item.foodName,price: item.price,})}>
@@ -76,13 +77,13 @@ export default function MenuPage() {
         ) : (
           <div>Sorry, No Pizza is in Stock!</div>
         )}
-        <div id={"side-orders"}>Side Orders</div>
+        <div className="menu-section" id={"side-orders"}>Side Orders</div>
         {allSideOrder.length ? (
           allSideOrder.map((item) => {
             return (
-              <div key={item.foodName} className="foodCard-container">
-                <div>{item.foodName}</div>
-                <img src={item.image} alt={item.description} />
+              <div className="foodCard-card" key={item.foodName}> 
+                <img className="foodCard-image" src={item.image} alt={item.description} />
+                <div className="foodCard-foodName">{item.foodName}</div>
                 <div>{`price: $${item.price}`}</div>
                 {Auth.loggedIn() ? (
                   <button onClick={() =>handleSaveToCart({foodName: item.foodName,price: item.price,})}>
@@ -95,14 +96,15 @@ export default function MenuPage() {
         ) : (
           <div>Sorry, No Side Order is in Stock!</div>
         )}
-        <div id={"beverage"}>Beverage</div>
+        <div className="menu-section" id={"beverage"}>Beverage</div>
         {allBeverage.length ? (
           allBeverage.map((item) => {
             return (
-              <div key={item.foodName} className="foodCard-container">
-                <div>{item.foodName}</div>
-                <img src={item.image} alt={item.description} />
-                <div>{`price: $${item.price}`}</div>
+              <div className="foodCard-card" key={item.foodName}>
+                
+                <img className="foodCard-image" src={item.image} alt={item.description} />
+                <div className="foodCard-foodName">{item.foodName}</div>
+                <div className="foodCard-price">{`price: $${item.price}`}</div>
                 {Auth.loggedIn() ? (
                   <button onClick={() =>handleSaveToCart({foodName: item.foodName,price: item.price,})}>
                     Add to Cart

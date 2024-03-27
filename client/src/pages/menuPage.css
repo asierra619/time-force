@@ -1,0 +1,47 @@
+/* setting the whole body container */
+.foodCard-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 80%;
+    height: 100%;
+    margin: 0% 15% 0% 5%;
+}
+
+.foodCard-card {
+    flex: 1 0 40%; /* Adjust the width as needed */
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.foodCard-image {
+    width: fit-content;
+    height:200px;
+}
+
+.foodCard-foodName {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 1% 0 1% 0
+} 
+
+.foodCard-price {
+    margin: 1% 0 2% 0
+}
+
+.menu-section {
+    width: 100%;
+    font-size: 150%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: rgb(229, 237, 157);
+    padding: 2% 0 2% 5%;
+    font-weight: bolder;
+}
+

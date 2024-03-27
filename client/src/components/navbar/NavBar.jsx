@@ -30,7 +30,7 @@ export default function NavBar() {
   return (
     <>
     <div className="navbar-container">
-      <div id={"top"} className="title">Time Force pizzeria</div>
+      <div id={"top"} className="title">Time Force Pizzeria</div>
       {Auth.loggedIn() ? (
       <>
         <span className="navbar-span">{`${'Welcome back! ' + userData.firstName + ' '+ userData.lastName}`}</span>

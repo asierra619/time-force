@@ -1,7 +1,7 @@
 .pizzaria-background {
     height: 50vh;
     width: 100%;
-    background-image: url('./pizza-background.jpg');
+    background-image: url('../public/pizza-background.jpg');
     background-repeat: repeat-x;
     background-size: cover;
 
